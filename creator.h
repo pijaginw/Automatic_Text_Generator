@@ -2,6 +2,7 @@
 #define	_CREATOR_H_
 
 #include "ngrams_list.h"
+#include "file_parser.h"
 #include <stdio.h>
 
 /*Tworzenie ngramow oraz ich listy*/

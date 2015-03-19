@@ -1,7 +1,7 @@
 #ifndef _WORD_LIST_H_
 #define	_WORD_LIST_H_
 
-struct ngram {
+typedef struct ngram {
     char** ngram;
     int how_many;
     char** suffixes;
@@ -9,7 +9,7 @@ struct ngram {
     struct ngram* next;
 } ngram_t;
 
-ngram_t* init_list();
+ngram_t* make_list();
 ngram_t* add_ngram( ngram_t*, char** );
 int get_ngram( ngram_t* );
 

@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 list_t const list;
-char** base_text;
+char** baseText;
 
 int parse_file( char *filename )
 {

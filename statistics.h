@@ -8,3 +8,5 @@
 double calc_prob( ngram_t* );
 double calc_pmi( ngram_t* );
 
+#endif
+
