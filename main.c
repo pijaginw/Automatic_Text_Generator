@@ -8,6 +8,7 @@
 #include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 int main( int argc, char** argv ) {
@@ -18,8 +19,9 @@ int main( int argc, char** argv ) {
     int rankNumber;
     int wordsNumber;
     int paragraphNumber;
-    char **fileNames, *baseName = NULL;
-    char *nextFile, *file;
+    char** filesNames;
+    char* baseName = NULL;
+    char* nextFile, *file;
     
     while(( opt = getopt( argc, argv, "t:m:n:l:p:" )) != -1) 
     {
@@ -33,7 +35,7 @@ int main( int argc, char** argv ) {
                     if(*argv[idx] != '-')
                     {
                         nextFile = strdup(argv[idx++]);
-                        fileNames[fcount++] = nextFile;
+                        filesNames[fcount++] = nextFile;
                     }
                     else break;
                 }

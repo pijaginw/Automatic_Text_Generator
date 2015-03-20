@@ -16,7 +16,7 @@ list_t init_list()
 
 list_t add_letter( list_t l, char c ) 
 {
-    elem_t *nl = malloc( sizeof *nl );
+    elem_t* nl = malloc( sizeof *nl );
     if( l == NULL )
     {
         nl->letter = c;

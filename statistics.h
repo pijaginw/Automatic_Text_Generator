@@ -2,7 +2,7 @@
 #define	_STATISTICS_H_
 
 #include "file_parser.h"
-#include "ngrams_list.h"
+#include "ngrams_base_creator.h"
 #include <stdio.h>
 
 double calc_prob( ngram_t* );
