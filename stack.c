@@ -1,6 +1,7 @@
 #include "stack.h"
 #include <stdio.h>
 
+/*
 list_t init_list()
 {
     elem_t *nw = malloc( sizeof *nw );
@@ -13,6 +14,7 @@ list_t init_list()
     nw->next = NULL;
     return nw;
 }
+*/
 
 list_t add_letter( list_t l, char c ) 
 {
@@ -21,7 +23,8 @@ list_t add_letter( list_t l, char c )
     {
         nl->letter = c;
         nl->next = NULL;
-        return nl;
+        l = nl;
+        return l;
     }
     else
     {
@@ -30,14 +33,14 @@ list_t add_letter( list_t l, char c )
     }
 }
 
-char get_letter( list_t l )
+list_t get_letter( list_t l )
 {
-    char c;
     if( l != NULL )
     {
+        char c;
         c = l->letter;
         l = l->next;
-        return c;
+        return l;
     }
 }
 

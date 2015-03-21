@@ -4,6 +4,10 @@
 
 #define INIT_SIZE 3
 
+/* !!
+ * dodać generowanie pliku bazowego z n-gramami 
+ * !!! */
+
 char* make_ngram( int n, char** base ) 
 {
     int index;
@@ -32,6 +36,7 @@ ngram_t* create_ngrams_base( char** base, ngram_t* list, int n, int baseSize )
     {
         list->ngram = make_ngram( n, base );
     }
+    /* tu reszta elementow listy */
     
     return list;
 }

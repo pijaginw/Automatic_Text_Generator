@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 /*Tworzenie ngramow oraz ich listy*/
+/* Oraz bazy n-gramow zapisywanej do pliku dodatkowego !!*/
 
 typedef struct ngram {
     char* ngram;
