@@ -5,8 +5,6 @@
 #include <string.h>
 #include <ctype.h>
 
-/* run -t tekstbazowy1.txt -m 2 -n 10 -l 1 -p base*/
-
 wtab_t* init_tab() 
 {
     int i;
@@ -21,12 +19,26 @@ wtab_t* init_tab()
     return nw;
 }
 
-wtab_t* resize( wtab_t* t ) 
+/*wtab_t* resize( wtab_t* t ) 
 {
-    t->wordsTab = ( wtab_t** )realloc( t->wordsTab, 2 * sizeof * (t->wordsTab) );
+    t->wordsTab = realloc( t->wordsTab, 2 * sizeof * (t->wordsTab) );
     if( (t->wordsTab) == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla bazy słów!\n" );
     t->capacity *= 2;
+    return t;
+}
+ */
+
+wtab_t* resize( wtab_t* t )
+{
+    int i;
+    wtabs_t** newwordsTab = realloc( t->wordsTab, 2 * t->capacity * sizeof **newwordsTab );
+    if( newwordsTab == NULL )
+        fprintf( stderr, "\nBlad! Nie powiekszono tablicy słów!\n" );
+    t->capacity *= 2;
+    t->wordsTab = newwordsTab;
+    for( i= 0; i < t->capacity; i++ )
+        t->wordsTab[i] = init_word_tab();
     return t;
 }
 
@@ -62,12 +74,14 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
     list_t list = NULL;
     FILE* infile = NULL;
     
-   // wTab = init_tab();
+    wTab = init_tab();
     
     for( i= 0; i < filesCounter; i++ )
     {
         infile = fopen( filesTab[i], "r" );
+        
         printf("zaczynam czytac plik\n");
+        
         if( infile == NULL )
             fprintf( stderr, "\nBlad! Nie mogę otworzyc pliku do czytania!\n" );
     
@@ -83,20 +97,23 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
             if( isspace(symb) )
             {
                 int i;
+                /*wTab = init_tab();*/
+                if( (wTab->size) == (wTab->capacity) )
+                    wTab = resize(wTab);
                 for( i= 0; i < scount; i++ ) {
-                    printf("pakuje slowo do tablicy\n");
-                    wTab = init_tab();
-                    if( (wTab->size) == (wTab->capacity) )
-                        wTab = resize(wTab);
-                    if( (wTab->wordsTab[i]->size) == (wTab->wordsTab[i]->size) )
-                        wTab->wordsTab[i] = resize(wTab->wordsTab[i]);
+                    printf("wkładam symbol %d do tablicy slowa\n", i);
+
+                    if( (wTab->wordsTab[i]->size) == (wTab->wordsTab[i]->capacity) )
+                        wTab->wordsTab[i] = resizes(wTab->wordsTab[i]);
                     wTab->wordsTab[wordscount]->word[i] = list->letter;
                     wTab->wordsTab[i]->size++;
                     list = get_letter(list);
                 }
-                printf("po zapakowaniu slowa\n");
+                printf("po zapakowaniu slowa %d\n", wordscount+1);
                 wordscount++;
                 wTab->size++;
+                wTab->wordsTab[i]->size = 0;
+                scount = 0;
             }
         }
     }
