@@ -17,7 +17,7 @@ int main( int argc, char** argv ) {
     int opt, idx, fcount = 0;
     int howManyFiles = 0;
     int rankNumber, wordsNumber, paragraphNumber;
-    char** filesNames;
+    char* filesNames[1];
     char* basefileName = NULL;
     char* nextFile, *file;
     
@@ -65,11 +65,13 @@ int main( int argc, char** argv ) {
     if( optind < argc )
         fprintf( stderr, "\nPodano zle argumenty!\n" );
     
+/*
     if( file != NULL ) {
         FILE *inf = NULL;
     }
+*/
     
-    wTab->wordsTab = parse_file( filesNames, fcount, wTab );
+    wTab = parse_file( filesNames, fcount, wTab );
     
     /*test kolejki
     
