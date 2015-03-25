@@ -9,25 +9,17 @@ wtab_t* init_tab()
 {
     int i;
     wtab_t* nw = malloc( sizeof * nw );
+    if( nw == NULL )
+        fprintf( stderr, "\nBlad! Brak pamieci dla struktury tablicy slów!\n" );
     nw->wordsTab = malloc( INIT_LENGTH * sizeof * *(nw->wordsTab) );
     if( (nw->wordsTab) == NULL )
-        fprintf( stderr, "\nBlad! Brak pamieci dla struktury tablicy slów!\n" );
+        fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     for( i= 0; i < INIT_LENGTH; i++)
         nw->wordsTab[i] = init_word_tab();
     nw->size = 0;
     nw->capacity = INIT_LENGTH;
     return nw;
 }
-
-/*wtab_t* resize( wtab_t* t ) 
-{
-    t->wordsTab = realloc( t->wordsTab, 2 * sizeof * (t->wordsTab) );
-    if( (t->wordsTab) == NULL )
-        fprintf( stderr, "\nBlad! Brak pamieci dla bazy słów!\n" );
-    t->capacity *= 2;
-    return t;
-}
- */
 
 wtab_t* resize( wtab_t* t )
 {
@@ -38,6 +30,7 @@ wtab_t* resize( wtab_t* t )
     t->capacity *= 2;
     t->wordsTab = newwordsTab;
     for( i= 0; i < t->capacity; i++ )
+    /*for( i= (t->capacity)/2; i < t->capacity; i++ )*/
         t->wordsTab[i] = init_word_tab();
     return t;
 }
@@ -57,11 +50,12 @@ wtabs_t* init_word_tab()
 
 wtabs_t* resizes( wtabs_t* ts )
 {
-    wtabs_t* nw = realloc( ts->word, 2 * sizeof (char) );
+    wtabs_t* nw = realloc( ts->word, 2 * ts->capacity * sizeof (char) );
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     nw->capacity *= 2;
-    return nw;
+    ts = nw;
+    return ts;
 }
 
 wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
@@ -94,7 +88,7 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
                 list = add_letter(list, symb);
                 scount++;
             }
-            if( isspace(symb) )
+            if( ( symb == EOF ) || isspace(symb) )
             {
                 int i;
                 /*wTab = init_tab();*/
@@ -111,6 +105,7 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
                 }
                 printf("po zapakowaniu slowa %d\n", wordscount+1);
                 wordscount++;
+                printf( "----%d----\n", wordscount );
                 wTab->size++;
                 wTab->wordsTab[i]->size = 0;
                 scount = 0;
@@ -118,9 +113,4 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
         }
     }
     return wTab;
-}
-
-int put_word_into_base( char* word, char** base ) 
-{
-
 }

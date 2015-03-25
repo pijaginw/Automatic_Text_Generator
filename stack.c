@@ -1,21 +1,6 @@
 #include "stack.h"
 #include <stdio.h>
 
-/*
-list_t init_list()
-{
-    elem_t *nw = malloc( sizeof *nw );
-    if( nw == NULL )
-    {
-        printf( "\nBlad! Brak pamieci dla listy.\n" );
-        return NULL;
-    }
-    nw->letter = 0;
-    nw->next = NULL;
-    return nw;
-}
-*/
-
 list_t add_letter( list_t l, char c ) 
 {
     elem_t* nl = malloc( sizeof *nl );

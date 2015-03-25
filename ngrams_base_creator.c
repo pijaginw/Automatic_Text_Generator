@@ -1,44 +1,96 @@
 #include "ngrams_base_creator.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-
-#define INIT_SIZE 3
 
 /* !!
  * dodać generowanie pliku bazowego z n-gramami 
  * !!! */
 
-char* make_ngram( int n, char** base ) 
+suftab_t* init_suf_tab() 
 {
-    int index;
     int i;
-    size_t size = INIT_SIZE;
-    char* newNgram = 0;
+    suftab_t* nsf = malloc( sizeof * nsf );
+    if( nsf == NULL )
+        fprintf( stderr, "\nBlad! Brak pamieci dla struktury tablicy sufiksów!\n" );
+    nsf->stab = malloc( INIT_SIZE * sizeof * *(nsf->stab) );
+    if( (nsf->stab) == NULL )
+        fprintf( stderr, "\nBlad! Brak pamieci dla tablicy sufiksów!\n" );
+    for( i= 0; i < INIT_SIZE; i++)
+        nsf->stab[i] = init_suf();
+    nsf->size = 0;
+    nsf->capacity = INIT_SIZE;
+    return nsf;
+}
+
+suf_t* init_suf()
+{
+    suf_t* ns = ( suf_t* )malloc( sizeof * ns );
+    if( ns == NULL )
+        fprintf( stderr, "\nBlad! Brak pamieci dla struktury sufiksu!\n" );
     
-    for( i= 0; i < n; i++ ) {
-        newNgram = malloc( size * sizeof * newNgram );
-        if( newNgram == NULL)
-            fprintf( stderr, "\nBlad! Brak pamieci dla tablicy n-gramu\n" );
-        else
-            newNgram = strcat( newNgram, base[index] );
+    ns->suffix = ( char* )malloc( INIT_SIZE * sizeof (char) );
+    if( (ns->suffix) == NULL )
+        fprintf( stderr, "\nBlad! Brak pamieci dla sufiksu!\n" );
+    
+    ns->prob = 0;
+    ns->size = 0;
+    ns->capacity = INIT_SIZE;
+    return ns;
+}
+
+ngram_t* make_ngram( int rank, int idx, wtab_t* wTab ) 
+{
+    int i;
+    size_t capacity = INIT_SIZE;
+    
+    ngram_t* newNgram = malloc( sizeof * newNgram );
+    if( newNgram == NULL)
+        fprintf( stderr, "\nBlad! Brak pamieci dla tablicy n-gramu\n" );
+    
+    newNgram->ngram = malloc( capacity * sizeof (char) );
+    if( (newNgram->ngram) == NULL)
+        fprintf( stderr, "\nBlad! Brak pamieci dla n-gramu\n" );
+    
+    newNgram->capacity = capacity;
+    newNgram->size = 0;
+    newNgram->ngramCount = 0;
+    
+    for( i= 0; i < rank; i++ ) {
+        if( (newNgram->size + wTab->wordsTab[idx]->size) > newNgram->capacity )
+        {
+            newNgram->ngram = realloc( newNgram->ngram, 2 * newNgram->capacity);
+            newNgram->capacity *= 2;
+        }
+        newNgram->ngram = strcat( newNgram->ngram, wTab->wordsTab[idx++]->word );
+        newNgram->size = strlen( newNgram->ngram );
     }
     return newNgram;
 }
 
-ngram_t* make_base() {}
-
-ngram_t* create_ngrams_base( char** base, ngram_t* list, int n, int baseSize ) 
+ngrams_t* create_ngrams_base( wtab_t* wTab, int rank ) 
 {
-    int idx = 0;
     int i;
-    
-    for( i= 0; i < baseSize-1; i++ )
+    int idx = 0;
+    ngrams_t* ngramsList = NULL;
+    for( i= 0; i < wTab->size-rank+1; i++ ) 
     {
-        list->ngram = make_ngram( n, base );
+        ngrams_t* newEl = ( ngrams_t* )malloc( sizeof * newEl );
+        if( newEl == NULL)
+            fprintf( stderr, "\nBlad! Brak pamieci dla nowego elementu listy n-gramów\n" );
+        
+        newEl->nGram = make_ngram( rank, idx++, wTab );
+        newEl->next = ngramsList;
     }
-    /* tu reszta elementow listy */
-    
-    return list;
+    return ngramsList;
 }
 
-int get_ngram( ngram_t* list ) {}
+char* get_ngram( ngrams_t* list ) 
+{
+    char* ngram;
+    
+    if( list != NULL )
+        ngram = list->nGram->ngram;
+    
+    return ngram;
+}

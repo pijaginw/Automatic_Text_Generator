@@ -10,7 +10,6 @@ typedef struct elem {
     struct elem *next;
 } elem_t, *list_t;
 
-/*list_t init_list();*/
 list_t add_letter( list_t l, char c );
 list_t get_letter( list_t l );
 void print_list( list_t l );

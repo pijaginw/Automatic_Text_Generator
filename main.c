@@ -72,6 +72,7 @@ int main( int argc, char** argv ) {
 */
     
     wTab = parse_file( filesNames, fcount, wTab );
+    printf( "size wTab w main --- %d\n", wTab->size);
     
     /*test kolejki
     
@@ -94,5 +95,9 @@ int main( int argc, char** argv ) {
     printf("bez 3:\n");
     print_list(list);
 */
+    
+    /*char** testowanie = make_ngram(2, wTab->wordsTab);*/
+    
+    
     return (EXIT_SUCCESS);
 }
