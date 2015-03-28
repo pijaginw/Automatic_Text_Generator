@@ -24,12 +24,13 @@ wtab_t* init_tab()
 wtab_t* resize( wtab_t* t )
 {
     int i;
+	 size_t tmp = t->capacity;
     wtabs_t** newwordsTab = realloc( t->wordsTab, 2 * t->capacity * sizeof **newwordsTab );
     if( newwordsTab == NULL )
         fprintf( stderr, "\nBlad! Nie powiekszono tablicy słów!\n" );
     t->capacity *= 2;
     t->wordsTab = newwordsTab;
-    for( i= 0; i < t->capacity; i++ )
+    for( i= tmp+1; i < t->capacity; i++ )
     /*for( i= (t->capacity)/2; i < t->capacity; i++ )*/
         t->wordsTab[i] = init_word_tab();
     return t;
@@ -54,8 +55,8 @@ wtabs_t* resizes( wtabs_t* ts )
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     nw->capacity *= 2;
-    ts = nw;
-    return ts;
+	 nw = ts;
+    return nw;
 }
 
 wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
@@ -97,17 +98,18 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
                 for( i= 0; i < scount; i++ ) {
                     printf("wkładam symbol %d do tablicy slowa\n", i);
 
-                    if( (wTab->wordsTab[i]->size) == (wTab->wordsTab[i]->capacity) )
-                        wTab->wordsTab[i] = resizes(wTab->wordsTab[i]);
+                    if( (wTab->wordsTab[wordscount]->size) == (wTab->wordsTab[wordscount]->capacity) )
+                        wTab->wordsTab[wordscount] = resizes(wTab->wordsTab[wordscount]);
                     wTab->wordsTab[wordscount]->word[i] = list->letter;
-                    wTab->wordsTab[i]->size++;
+						  printf( "-->%c\n", wTab->wordsTab[wordscount]->word[i] );
+                    wTab->wordsTab[wordscount]->size++;
                     list = get_letter(list);
                 }
                 printf("po zapakowaniu slowa %d\n", wordscount+1);
                 wordscount++;
                 printf( "----%d----\n", wordscount );
                 wTab->size++;
-                wTab->wordsTab[i]->size = 0;
+                /*wTab->wordsTab[wordscount]->size = 0;*/
                 scount = 0;
             }
         }

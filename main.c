@@ -73,7 +73,9 @@ int main( int argc, char** argv ) {
     
     wTab = parse_file( filesNames, fcount, wTab );
     printf( "size wTab w main --- %d\n", wTab->size);
-    
+
+    printf( "\n-----%c\n", wTab->wordsTab[0]->word[0]);
+
     /*test kolejki
     
     list_t list = NULL;
@@ -97,7 +99,7 @@ int main( int argc, char** argv ) {
 */
     
     /*char** testowanie = make_ngram(2, wTab->wordsTab);*/
-    
+	printf("\n%s\n", wTab->wordsTab[2]->word );    
     
     return (EXIT_SUCCESS);
 }
