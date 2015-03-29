@@ -30,7 +30,8 @@ wtab_t* resize( wtab_t* t )
         fprintf( stderr, "\nBlad! Nie powiekszono tablicy słów!\n" );
     t->capacity *= 2;
     t->wordsTab = newwordsTab;
-    for( i= tmp+1; i < t->capacity; i++ )
+	 /*newwordsTab = t->wordsTab;*/
+    for( i= tmp; i < t->capacity; i++ )
     /*for( i= (t->capacity)/2; i < t->capacity; i++ )*/
         t->wordsTab[i] = init_word_tab();
     return t;
@@ -89,14 +90,14 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
                 list = add_letter(list, symb);
                 scount++;
             }
-            if( ( symb == EOF ) || isspace(symb) )
+            if( isspace(symb) )
             {
                 int i;
                 /*wTab = init_tab();*/
                 if( (wTab->size) == (wTab->capacity) )
                     wTab = resize(wTab);
                 for( i= 0; i < scount; i++ ) {
-                    printf("wkładam symbol %d do tablicy slowa\n", i);
+                    printf("wkładam symbol %d do tablicy slowa", i);
 
                     if( (wTab->wordsTab[wordscount]->size) == (wTab->wordsTab[wordscount]->capacity) )
                         wTab->wordsTab[wordscount] = resizes(wTab->wordsTab[wordscount]);

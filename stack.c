@@ -1,5 +1,6 @@
 #include "stack.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 list_t add_letter( list_t l, char c ) 
 {

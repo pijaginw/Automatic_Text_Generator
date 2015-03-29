@@ -7,6 +7,7 @@
 
 #include "stack.h"
 #include "file_parser.h"
+#include "ngrams_base_creator.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -76,30 +77,27 @@ int main( int argc, char** argv ) {
 
     printf( "\n-----%c\n", wTab->wordsTab[0]->word[0]);
 
-    /*test kolejki
-    
-    list_t list = NULL;
-    list = add_letter(list, 'a');
-    list = add_letter(list, 'b');
-    list = add_letter(list, 'c');
-    printf("cala lista:\n");
-    print_list(list);
-    printf("\n");
-    list = get_letter(list);
-    printf("bez 1:\n");
-    print_list(list);
-    printf("\n");
-    list = get_letter(list);
-    printf("bez 2:\n");
-    print_list(list);
-    printf("\n");
-    list = get_letter(list);
-    printf("bez 3:\n");
-    print_list(list);
-*/
-    
-    /*char** testowanie = make_ngram(2, wTab->wordsTab);*/
-	printf("\n%s\n", wTab->wordsTab[2]->word );    
-    
+	int m;
+	printf("-->size--%i\n", wTab->size);
+	for( m= 0; m < wTab->size; m++ )
+		printf( "\n---%s---\n", wTab->wordsTab[m]->word );
+	printf( "-->slowo 3-->%s\n", wTab->wordsTab[2]->word );
+	printf( "rozmiar slowa 10-->%d\n", wTab->wordsTab[9]->size );
+
+	ngram_t* ngram1 = make_ngram(7, 0, wTab);
+	printf( "--ngram: %s\n", ngram1->ngram );
+
+	ngram_t* ngram2 = make_ngram(7, 6, wTab);
+	printf( "--ngram: %s\n", ngram2->ngram );
+
+	ngram_t* ngram3 = make_ngram(7, 12, wTab);
+	printf( "--ngram: %s\n", ngram3->ngram );
+
+	for( m= 0; m < wTab->size; m++ ) {
+		free(wTab->wordsTab[m]->word);
+		free(wTab->wordsTab[m]);
+	}
+	free(wTab);
+
     return (EXIT_SUCCESS);
 }

@@ -63,6 +63,8 @@ ngram_t* make_ngram( int rank, int idx, wtab_t* wTab )
             newNgram->capacity *= 2;
         }
         newNgram->ngram = strcat( newNgram->ngram, wTab->wordsTab[idx++]->word );
+        newNgram->ngram = strcat( newNgram->ngram, " " );
+
         newNgram->size = strlen( newNgram->ngram );
     }
     return newNgram;
