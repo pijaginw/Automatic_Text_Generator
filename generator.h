@@ -4,7 +4,7 @@
 #include "ngrams_base_creator.h"
 #include <stdio.h>
 
-int get_random_suffix( ngram_t* );
+int get_random_suffix( char*, ngrams_t* );
 
 #endif
 

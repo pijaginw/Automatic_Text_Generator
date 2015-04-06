@@ -1,7 +1,7 @@
 #ifndef _STACK_H_
 #define	_STACK_H_
 
-#define INIT_SIZE 5
+#define INIT_SIZE5 5
 
 #include <stdio.h>
 

@@ -1,8 +1,8 @@
 #ifndef _FILE_PARSER_H_
 #define	_FILE_PARSER_H_
 
-#define INIT_LENGTH 10
-#define INIT_LENGTH_S 3
+#define INIT_LENGTH 100
+#define INIT_LENGTH_S 100
 
 #include <stdio.h>
 

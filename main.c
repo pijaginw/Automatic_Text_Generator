@@ -21,6 +21,7 @@ int main( int argc, char** argv ) {
     char* filesNames[1];
     char* basefileName = NULL;
     char* nextFile, *file;
+    int index;
     
     wtab_t* wTab = init_tab();
     
@@ -84,15 +85,26 @@ int main( int argc, char** argv ) {
 	printf( "-->slowo 3-->%s\n", wTab->wordsTab[2]->word );
 	printf( "rozmiar slowa 10-->%d\n", wTab->wordsTab[9]->size );
 
-	ngram_t* ngram1 = make_ngram(7, 0, wTab);
+	ngram_t* ngram1 = make_ngram(2, 0, wTab);
 	printf( "--ngram: %s\n", ngram1->ngram );
 
-	ngram_t* ngram2 = make_ngram(7, 6, wTab);
+	ngram_t* ngram2 = make_ngram(2, 1, wTab);
 	printf( "--ngram: %s\n", ngram2->ngram );
 
-	ngram_t* ngram3 = make_ngram(7, 12, wTab);
+	ngram_t* ngram3 = make_ngram(2, 2, wTab);
 	printf( "--ngram: %s\n", ngram3->ngram );
+        
+        ngrams_t* ngramsList = create_ngrams_base( wTab, 2 );
+        print_ngramsList( ngramsList );
 
+/*
+        index = get_random_suffix( ngramsList->nGram->ngram, ngramsList );
+        if( index == -1 )
+            printf( "nie znaleziono sufiksu\n" );
+        else
+            printf( "wylosowany indeks: %d\n", index );
+        
+*/
 	for( m= 0; m < wTab->size; m++ ) {
 		free(wTab->wordsTab[m]->word);
 		free(wTab->wordsTab[m]);

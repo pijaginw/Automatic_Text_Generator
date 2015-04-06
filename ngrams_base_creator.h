@@ -4,8 +4,8 @@
 #include "file_parser.h"
 #include <stdio.h>
 
-#define INIT_SIZE 3
-#define INIT_SF_SIZE 5
+#define INIT_SIZE 100
+#define INIT_SF_SIZE 100
 
 /*Tworzenie ngramow oraz ich listy*/
 /* Oraz bazy n-gramow zapisywanej do pliku dodatkowego !!*/
@@ -23,7 +23,7 @@ typedef struct suftab {
     suf_t** stab;
     size_t size;
     size_t capacity;
-} suftab_t; 
+} suftab_t;
 
 /*tutaj przechowywany jest jeden ngram */
 typedef struct ngram {
@@ -35,7 +35,7 @@ typedef struct ngram {
 
 typedef struct ngrams {
     ngram_t* nGram; /*dyn tab dla jednego n-gramu */
-    suf_t* sufTab;
+    suftab_t* sufTab;
     struct ngrams* next;
 } ngrams_t;
 
