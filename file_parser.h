@@ -4,6 +4,7 @@
 #define INIT_LENGTH 100
 #define INIT_LENGTH_S 100
 
+#include "stack.h"
 #include <stdio.h>
 
 typedef struct word {

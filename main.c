@@ -97,6 +97,7 @@ int main( int argc, char** argv ) {
         ngrams_t* ngramsList = create_ngrams_base( wTab, 2 );
         print_ngramsList( ngramsList );
 
+
 /*
         index = get_random_suffix( ngramsList->nGram->ngram, ngramsList );
         if( index == -1 )
@@ -105,11 +106,19 @@ int main( int argc, char** argv ) {
             printf( "wylosowany indeks: %d\n", index );
         
 */
+        generate_text( wTab, ngramsList, 10, 2 );
+        
 	for( m= 0; m < wTab->size; m++ ) {
 		free(wTab->wordsTab[m]->word);
 		free(wTab->wordsTab[m]);
 	}
 	free(wTab);
+        while( ngramsList != NULL ) {
+            free(ngramsList->sufTab);
+            free(ngramsList->nGram);
+            free(ngramsList);
+            ngramsList = ngramsList->next;
+        }
 
     return (EXIT_SUCCESS);
 }

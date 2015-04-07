@@ -97,8 +97,8 @@ ngrams_t* create_ngrams_base( wtab_t* wTab, int rank )
     int true;
     ngram_t* newnGram;
     ngrams_t* ngramsList = NULL;
-    ngrams_t* newEl;
     ngrams_t* ntmp;
+    ngrams_t* newEl;
     
     for( idx= 0; idx < wTab->size-rank; idx++ ) 
     {
@@ -112,6 +112,7 @@ ngrams_t* create_ngrams_base( wtab_t* wTab, int rank )
             {
                 printf("jestem w 1 if\n");
                 true = 1;
+                ngramsList->nGram->ngramCount++;
                 if( (ngramsList->sufTab->size) == (ngramsList->sufTab->capacity) )
                     ngramsList->sufTab = resize_suf_tab( ngramsList->sufTab );
                 if( (strlen( wTab->wordsTab[idx++]->word )) > ngramsList->sufTab->stab[ngramsList->sufTab->size]->size )
@@ -132,16 +133,15 @@ ngrams_t* create_ngrams_base( wtab_t* wTab, int rank )
             fprintf( stderr, "\nBlad! Brak pamieci dla nowego elementu listy n-gramow!\n" );
         
         newEl->nGram = newnGram;
+        newEl->nGram->ngramCount++;
         newEl->sufTab = init_suf_tab();
         newEl->sufTab->stab[newEl->sufTab->size++]->suffix = wTab->wordsTab[idx++]->word;
         idx--;
-        ntmp = newEl;
         newEl->next = ngramsList;
-        ngramsList = ntmp;
         printf("jestem po newEl\n");
         }
     }
-    return ngramsList;
+    return newEl;
 }
 
 void print_ngramsList( ngrams_t* ngramsList )

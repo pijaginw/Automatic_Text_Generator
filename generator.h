@@ -3,6 +3,7 @@
 
 #include "ngrams_base_creator.h"
 #include <stdio.h>
+#include <string.h>
 
 int get_random_suffix( char*, ngrams_t* );
 

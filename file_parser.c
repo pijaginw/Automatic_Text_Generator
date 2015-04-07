@@ -1,4 +1,3 @@
-#include "stack.h"
 #include "file_parser.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +23,7 @@ wtab_t* init_tab()
 wtab_t* resize( wtab_t* t )
 {
     int i;
-	 size_t tmp = t->capacity;
+    size_t tmp = t->capacity;
     wtabs_t** newwordsTab = realloc( t->wordsTab, 2 * t->capacity * sizeof **newwordsTab );
     if( newwordsTab == NULL )
         fprintf( stderr, "\nBlad! Nie powiekszono tablicy słów!\n" );
@@ -56,8 +55,9 @@ wtabs_t* resizes( wtabs_t* ts )
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     nw->capacity *= 2;
-	 nw = ts;
-    return nw;
+	 /*nw = ts;*/
+    ts = nw;
+    return ts;
 }
 
 wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
