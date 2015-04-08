@@ -106,7 +106,6 @@ int main( int argc, char** argv ) {
             printf( "wylosowany indeks: %d\n", index );
         
 */
-        generate_text( wTab, ngramsList, 10, 2 );
         
 	for( m= 0; m < wTab->size; m++ ) {
 		free(wTab->wordsTab[m]->word);

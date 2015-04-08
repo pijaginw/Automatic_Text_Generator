@@ -115,5 +115,6 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
             }
         }
     }
+    fclose(infile);
     return wTab;
 }
