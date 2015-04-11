@@ -1,8 +1,8 @@
 #ifndef _FILE_PARSER_H_
 #define	_FILE_PARSER_H_
 
-#define INIT_LENGTH 100
-#define INIT_LENGTH_S 100
+#define INIT_LENGTH 5
+#define INIT_LENGTH_S 3
 
 #include "stack.h"
 #include <stdio.h>

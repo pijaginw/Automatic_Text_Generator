@@ -6,6 +6,6 @@
 #include <string.h>
 
 int get_random_suffix( char*, ngrams_t* );
-
+void generate_text( wtab_t*, ngrams_t*, int, int );
 #endif
 

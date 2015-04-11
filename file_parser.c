@@ -51,12 +51,11 @@ wtabs_t* init_word_tab()
 
 wtabs_t* resizes( wtabs_t* ts )
 {
-    wtabs_t* nw = realloc( ts->word, 2 * ts->capacity * sizeof (char) );
+    char* nw = realloc( ts->word, 2 * ts->capacity * sizeof * ts->word );
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
-    nw->capacity *= 2;
-	 /*nw = ts;*/
-    ts = nw;
+    ts->capacity *= 2;
+	 ts->word = nw;
     return ts;
 }
 
@@ -106,7 +105,7 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
                     wTab->wordsTab[wordscount]->size++;
                     list = get_letter(list);
                 }
-                printf("po zapakowaniu slowa %d\n", wordscount+1);
+                printf("po zapakowaniu slowa %d, %s\n", wordscount+1, wTab->wordsTab[wordscount]->word );
                 wordscount++;
                 printf( "----%d----\n", wordscount );
                 wTab->size++;
@@ -115,6 +114,6 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
             }
         }
     }
-    fclose(infile);
+	 fclose(infile);
     return wTab;
 }

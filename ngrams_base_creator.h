@@ -4,8 +4,8 @@
 #include "file_parser.h"
 #include <stdio.h>
 
-#define INIT_SIZE 100
-#define INIT_SF_SIZE 100
+#define INIT_SIZE 10
+#define INIT_SF_SIZE 3
 
 /*Tworzenie ngramow oraz ich listy*/
 /* Oraz bazy n-gramow zapisywanej do pliku dodatkowego !!*/
@@ -20,7 +20,7 @@ typedef struct suffix {
 
 /*dynamiczna tablica sufiksów*/
 typedef struct suftab {
-    suf_t** stab;
+    suf_t* stab;
     size_t size;
     size_t capacity;
 } suftab_t;
@@ -39,6 +39,7 @@ typedef struct ngrams {
     struct ngrams* next;
 } ngrams_t;
 
+ngrams_t* ngramsList;
 /*chyba tak byłoby lepiej
  struct elemngram {
     char* ngram;
@@ -47,13 +48,15 @@ typedef struct ngrams {
     struct ngrams* next;
  };*/
 
-suf_t* init_suf();
-suf_t* resize_suf( suf_t* );
+suf_t init_suf();
+char* resize_suf( suf_t* );
 suftab_t* init_suf_tab();
 suftab_t* resize_suf_tab( suftab_t* );
 suftab_t* add_suffix( suftab_t* );
 ngram_t* make_ngram( int, int, wtab_t* ); /*tworzy i zwraca ngram o podanym rzedzie */
 ngrams_t* create_ngrams_base( wtab_t*, int ); /*tworzy i zwraca pełną listę ngramow */
+void print_ngramsList( ngrams_t* );
+void delete_list( ngrams_t* );
 char* get_ngram( ngrams_t* );
 
 #endif

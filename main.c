@@ -8,6 +8,7 @@
 #include "stack.h"
 #include "file_parser.h"
 #include "ngrams_base_creator.h"
+#include "generator.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,29 +75,30 @@ int main( int argc, char** argv ) {
 */
     
     wTab = parse_file( filesNames, fcount, wTab );
-    printf( "size wTab w main --- %d\n", wTab->size);
+    printf( "size wTab w main --- %zu\n", wTab->size);
+	 printf( "co siedzi w wTab 1-->%s\n", wTab->wordsTab[0]->word );
 
     printf( "\n-----%c\n", wTab->wordsTab[0]->word[0]);
 
 	int m;
-	printf("-->size--%i\n", wTab->size);
-	for( m= 0; m < wTab->size; m++ )
+	printf("-->size--%zu\n", wTab->size);
+/*	for( m= 0; m < wTab->size; m++ )
 		printf( "\n---%s---\n", wTab->wordsTab[m]->word );
 	printf( "-->slowo 3-->%s\n", wTab->wordsTab[2]->word );
-	printf( "rozmiar slowa 10-->%d\n", wTab->wordsTab[9]->size );
+	printf( "rozmiar slowa 10-->%d\n", wTab->wordsTab[9]->size );*/
 
 	ngram_t* ngram1 = make_ngram(2, 0, wTab);
-	printf( "--ngram: %s\n", ngram1->ngram );
+	printf( "--ngram:%s\n", ngram1->ngram );
 
 	ngram_t* ngram2 = make_ngram(2, 1, wTab);
-	printf( "--ngram: %s\n", ngram2->ngram );
+	printf( "--ngram:%s\n", ngram2->ngram );
 
 	ngram_t* ngram3 = make_ngram(2, 2, wTab);
-	printf( "--ngram: %s\n", ngram3->ngram );
-        
+	printf( "--ngram:%s\n", ngram3->ngram );
+
         ngrams_t* ngramsList = create_ngrams_base( wTab, 2 );
         print_ngramsList( ngramsList );
-
+		  generate_text( wTab, ngramsList, 5, 2 );
 
 /*
         index = get_random_suffix( ngramsList->nGram->ngram, ngramsList );
@@ -107,17 +109,18 @@ int main( int argc, char** argv ) {
         
 */
         
-	for( m= 0; m < wTab->size; m++ ) {
+	/*for( m= 0; m < wTab->size; m++ ) {
 		free(wTab->wordsTab[m]->word);
 		free(wTab->wordsTab[m]);
 	}
-	free(wTab);
+
         while( ngramsList != NULL ) {
             free(ngramsList->sufTab);
             free(ngramsList->nGram);
             free(ngramsList);
             ngramsList = ngramsList->next;
-        }
+        }*/
+		  /*free(wTab);*/
 
     return (EXIT_SUCCESS);
 }
