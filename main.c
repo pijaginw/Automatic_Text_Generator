@@ -5,9 +5,8 @@
  * Created on 12 marca 2015, 20:24
  */
 
-#include "stack.h"
 #include "file_parser.h"
-#include "ngrams_base_creator.h"
+#include "ngrams_base_creator2.h"
 #include "generator.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -82,24 +81,19 @@ int main( int argc, char** argv ) {
 
 	int m;
 	printf("-->size--%zu\n", wTab->size);
-/*	for( m= 0; m < wTab->size; m++ )
-		printf( "\n---%s---\n", wTab->wordsTab[m]->word );
-	printf( "-->slowo 3-->%s\n", wTab->wordsTab[2]->word );
-	printf( "rozmiar slowa 10-->%d\n", wTab->wordsTab[9]->size );*/
 
-	ngram_t* ngram1 = make_ngram(2, 0, wTab);
+	ngram_t* ngram1 = make_ngram2(wTab, 0, 2);
 	printf( "--ngram:%s\n", ngram1->ngram );
 
-	ngram_t* ngram2 = make_ngram(2, 1, wTab);
+	ngram_t* ngram2 = make_ngram2(wTab, 1, 2);
 	printf( "--ngram:%s\n", ngram2->ngram );
 
-	ngram_t* ngram3 = make_ngram(2, 2, wTab);
+	ngram_t* ngram3 = make_ngram2(wTab, 2, 2);
 	printf( "--ngram:%s\n", ngram3->ngram );
 
-        ngrams_t* ngramsList = create_ngrams_base( wTab, 2 );
-        print_ngramsList( ngramsList );
-		  generate_text( wTab, ngramsList, 5, 2 );
-
+		  nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, 2 );
+		  print_ngramstab( ngramsBase, wTab );
+		  generate_text( wTab, ngramsBase, 10, 2 );
 /*
         index = get_random_suffix( ngramsList->nGram->ngram, ngramsList );
         if( index == -1 )
@@ -108,19 +102,5 @@ int main( int argc, char** argv ) {
             printf( "wylosowany indeks: %d\n", index );
         
 */
-        
-	/*for( m= 0; m < wTab->size; m++ ) {
-		free(wTab->wordsTab[m]->word);
-		free(wTab->wordsTab[m]);
-	}
-
-        while( ngramsList != NULL ) {
-            free(ngramsList->sufTab);
-            free(ngramsList->nGram);
-            free(ngramsList);
-            ngramsList = ngramsList->next;
-        }*/
-		  /*free(wTab);*/
-
     return (EXIT_SUCCESS);
 }

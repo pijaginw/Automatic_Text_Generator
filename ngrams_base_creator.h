@@ -36,17 +36,14 @@ typedef struct ngram {
 typedef struct ngrams {
     ngram_t* nGram; /*dyn tab dla jednego n-gramu */
     suftab_t* sufTab;
-    struct ngrams* next;
 } ngrams_t;
 
-ngrams_t* ngramsList;
-/*chyba tak byłoby lepiej
- struct elemngram {
-    char* ngram;
-    int ngramCount;
-    struct suffix* sufTab;
-    struct ngrams* next;
- };*/
+typedef struct basetab {
+	ngrams_t* ngramsBaseTab;
+	size_t size;
+	size_t capacity;
+} nbtab_t;
+
 
 suf_t init_suf();
 char* resize_suf( suf_t* );
@@ -54,7 +51,7 @@ suftab_t* init_suf_tab();
 suftab_t* resize_suf_tab( suftab_t* );
 suftab_t* add_suffix( suftab_t* );
 ngram_t* make_ngram( int, int, wtab_t* ); /*tworzy i zwraca ngram o podanym rzedzie */
-ngrams_t* create_ngrams_base( wtab_t*, int ); /*tworzy i zwraca pełną listę ngramow */
+nbtab_t* create_ngrams_base( wtab_t*, int ); /*tworzy i zwraca pełną tablicę dyn  ngramow */
 void print_ngramsList( ngrams_t* );
 void delete_list( ngrams_t* );
 char* get_ngram( ngrams_t* );

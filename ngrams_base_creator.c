@@ -12,7 +12,7 @@ char* init_suffix()
 	char* news = ( char* )malloc( INIT_SF_SIZE * sizeof (char) );
 	if( news == NULL )
 		fprintf( stderr, "\nBlad! Brak pamieci dla sufiksu w init_suffix()!\n" );
-	news = ( char* )memset( news, '\0', INIT_SF_SIZE );
+/*	news = ( char* )memset( news, '\0', INIT_SF_SIZE );*/
 	return news;
 }
 
@@ -34,22 +34,6 @@ suftab_t* init_suf_tab()
 	 nsf->size = 0;
     nsf->capacity = INIT_SIZE;
     return nsf;
-}
-
-suf_t init_suf()
-{
-    suf_t* ns = ( suf_t* )malloc( sizeof * ns );
-    if( ns == NULL )
-        fprintf( stderr, "\nBlad! Brak pamieci dla struktury sufiksu!\n" );
-    
-    ns->suffix = ( char* )malloc( INIT_SIZE * sizeof (char) );
-    if( (ns->suffix) == NULL )
-        fprintf( stderr, "\nBlad! Brak pamieci dla sufiksu!\n" );
-    
-    ns->prob = 0;
-    ns->size = 0;
-    ns->capacity = INIT_SIZE;
-    return *ns;
 }
 
 suftab_t* resize_suf_tab( suftab_t* sufTab )
@@ -95,6 +79,33 @@ char* resize_suf( suf_t* s )
     return s->suffix;
 }
 
+nbtab_t* init_ngrams_base_tab()
+{
+	int i;
+	nbtab_t* newBase = ( nbtab_t* )malloc( sizeof * newBase );
+	if( newBase == NULL )
+		fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla struktury tablicy n-gramow.\n" );
+	/*for( i= 0; i < INIT_SIZE; i++ )
+	{*/
+		ngrams_t* newBaseTab = ( ngrams_t* )malloc( INIT_SIZE * sizeof (ngrams_t) );
+		if( newBaseTab == NULL )
+			fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla tablicy ngramow.\n" );
+	newBase->ngramsBaseTab = newBaseTab;
+	for( i= 0; i < INIT_SIZE; i++ )
+	{
+		/*newBase->ngramsBaseTab = newBaseTab;*/
+		newBase->ngramsBaseTab[i].nGram->ngram = ( char* )malloc( INIT_SIZE * sizeof (char ) );
+		newBase->ngramsBaseTab[i].nGram->size = 0;
+		newBase->ngramsBaseTab[i].nGram->capacity = INIT_SIZE;
+	/*	newBase->ngramsBaseTab[i].sufTab->stab[i].suffix = init_suffix();*/
+		newBase->ngramsBaseTab[i].sufTab->size = 0;
+		newBase->ngramsBaseTab[i].sufTab->capacity = INIT_SIZE;
+		newBase->ngramsBaseTab[i].nGram->ngram = memset( newBase->ngramsBaseTab[i].nGram->ngram, '\0', INIT_SIZE );
+		/*newBase->ngramsBaseTab[i].sufTab->stab[i].suffix = memset( newBase->ngramsBaseTab[i].sufTab->stab[i].suffix, '\0', INIT_SIZE );*/
+	}
+	return newBase;
+}
+
 ngram_t* make_ngram( int rank, int idx, wtab_t* wTab ) 
 {
     int i;
@@ -135,72 +146,49 @@ ngram_t* make_ngram( int rank, int idx, wtab_t* wTab )
     return newNgram;
 }
 
-ngrams_t* create_ngrams_base( wtab_t* wTab, int rank ) 
+nbtab_t* create_ngrams_base( wtab_t* wTab, int rank ) 
 {
     int i, idx = 0;
     int istrue;
+	 nbtab_t* ngramsBase;
     ngram_t* newnGram;
-    ngrams_t* ngramsList; /*glowa listy */
-    ngrams_t* ntmp = NULL, *tmp = NULL;
     ngrams_t* newEl;
-    
-    ngramsList = ( ngrams_t* )malloc( sizeof *ngramsList );
-	 if( ngramsList == NULL )
-	 	fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla glowy listy.\n" );
-	
-	/*tmp = ( ngrams_t* )malloc( sizeof * tmp );
-	if( tmp == NULL )
-	 	fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla tmp.\n" );
-	ntmp = ( ngrams_t* )malloc( sizeof * ntmp );
-	if( ntmp == NULL )
-	 	fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla glowy ntmp.\n" );*/
+   
+	ngramsBase = init_ngrams_base_tab();
 
-	 ngramsList->next = NULL;
-    
     for( idx= 0; idx < wTab->size-rank; idx++ ) 
     {
         istrue = 0;
         newnGram = make_ngram( rank, idx, wTab );
         printf(" nowy ngram:%s\n", newnGram->ngram );
         
-        tmp = ngramsList;
-        while( tmp != NULL )
+        for( i = 0; i < ngramsBase->size; i++ )
         {
-            if( (strcmp( newnGram->ngram, tmp->nGram->ngram )) == 0 )
+            if( (strcmp( ngramsBase->ngramsBaseTab[i].nGram->ngram, ngramsBase->ngramsBaseTab[idx].nGram->ngram )) == 0 )
             {
                 istrue = 1;
-					 printf("znalazlem taki ngram w liscie\n");
-                if( (tmp->sufTab->size) == (tmp->sufTab->capacity) )
-                    tmp->sufTab = resize_suf_tab( tmp->sufTab );
-						  printf( "hmmmmm a co tutaj siedzi?? **%s**\n", tmp->sufTab->stab[0].suffix );
-                if( ( strlen( wTab->wordsTab[idx+rank]->word )) > tmp->sufTab->stab[tmp->sufTab->size].size )
+					 printf("znalazlem taki ngram w tablicy\n");
+                if( (ngramsBase->ngramsBaseTab[i].sufTab->size) == (ngramsBase->ngramsBaseTab[i].sufTab->capacity) )
+                    ngramsBase->ngramsBaseTab[i].sufTab = resize_suf_tab( ngramsBase->ngramsBaseTab[i].sufTab );
+						  printf( "hmmmmm a co tutaj siedzi?? **%s**\n", ngramsBase->ngramsBaseTab[i].sufTab->stab[0].suffix );
+                if( ( strlen( wTab->wordsTab[idx+rank]->word )) > ngramsBase->ngramsBaseTab[i].sufTab->stab[ngramsBase->ngramsBaseTab[i].sufTab->size].size )
 					 {
-                  tmp->sufTab->stab[tmp->sufTab->size].suffix = resize_suf( tmp->sufTab->stab );
-                	tmp->sufTab->stab[tmp->sufTab->size].capacity *= 2;
+                  ngramsBase->ngramsBaseTab[i].sufTab->stab[ngramsBase->ngramsBaseTab[i].sufTab->size].suffix = resize_suf( ngramsBase->ngramsBaseTab[i].sufTab->stab );
+                	ngramsBase->ngramsBaseTab[i].sufTab->stab[ngramsBase->ngramsBaseTab[i].sufTab->size].capacity *= 2;
 					 }
-                tmp->sufTab->stab[++tmp->sufTab->size].suffix = wTab->wordsTab[idx+rank]->word;
-					 tmp->sufTab->stab[tmp->sufTab->size].size += strlen( wTab->wordsTab[idx]->word );
-					 printf( "sufiks:%s\n", tmp->sufTab->stab[--tmp->sufTab->size].suffix );
-                tmp->sufTab->size++;
-					 tmp->nGram->ngramCount++;
+                ngramsBase->ngramsBaseTab[i].sufTab->stab[++ngramsBase->ngramsBaseTab[i].sufTab->size].suffix = wTab->wordsTab[idx+rank]->word;
+					 ngramsBase->ngramsBaseTab[i].sufTab->stab[ngramsBase->ngramsBaseTab[i].sufTab->size].size += strlen( wTab->wordsTab[idx]->word );
+					 printf( "sufiks:%s\n", ngramsBase->ngramsBaseTab[i].sufTab->stab[--ngramsBase->ngramsBaseTab[i].sufTab->size].suffix );
+                ngramsBase->ngramsBaseTab[i].sufTab->size++;
+					 ngramsBase->ngramsBaseTab[i].nGram->ngramCount++;
 					 break;
             }
-            tmp = tmp->next;
         }
         
         if( istrue == 0 )
         {
-		  		ntmp = ( ngrams_t* )malloc( sizeof * ntmp );
-            ntmp = ngramsList;
-            while( ntmp != NULL )
-                ntmp = ntmp->next;
-        
-            newEl = ( ngrams_t* )malloc( sizeof * newEl );
-            if( newEl == NULL)
-                fprintf( stderr, "\nBlad! Brak pamieci dla nowego elementu listy n-gramow!\n" );
-        
-				/*ntmp->next = newEl;*/
-            
+		  		newEl = ( ngrams_t* )malloc( sizeof * newEl );
+					fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla nowego elementu tablicy ngramow.\n" );
             newEl->nGram = newnGram;
             newEl->nGram->ngramCount++;
             newEl->sufTab = init_suf_tab();
@@ -208,18 +196,12 @@ ngrams_t* create_ngrams_base( wtab_t* wTab, int rank )
             newEl->sufTab->stab[newEl->sufTab->size++].suffix = wTab->wordsTab[idx+rank]->word;
 				printf( "sufiks:%s\n", newEl->sufTab->stab[--newEl->sufTab->size].suffix );
 				newEl->sufTab->size++;
-           
-			  /*	ntmp->next = ( ngrams_t* )malloc( sizeof * (ntmp->next) );
-				if( (ntmp->next) == NULL )
-					fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla nastepnego elementu.\n" );*/
-				ntmp->next = newEl;
-            newEl->next = NULL;
+				ngramsBase->ngramsBaseTab[i] = *newEl;
+				ngramsBase->size++;
         }
     }
-	 free(tmp);
-	 free(ntmp);
 	 free(newnGram);
-    return ngramsList;
+    return ngramsBase;
 }
 
 void print_ngramsList( ngrams_t* ngramsList )
@@ -236,7 +218,16 @@ void print_ngramsList( ngrams_t* ngramsList )
 	 free(p);
 	 return;
 }
-
+void print_ngramsbase( nbtab_t* ngramsBase )
+{
+	int i;
+	printf( "testowanie tablicy ngramow:\n" );
+	for( i= 0; i < ngramsBase->size; i++ ) {
+		printf( "ngram:%s\n", ngramsBase->ngramsBaseTab[i].nGram->ngram );
+		printf( "suffix[0]:%s\n", ngramsBase->ngramsBaseTab[i].sufTab->stab[0].suffix );
+	}
+	return;
+}
 void delete_list( ngrams_t* ngramsList )
 {
 	while( ngramsList->next->next != NULL ){
