@@ -4,7 +4,7 @@
 
 list_t add_letter( list_t l, char c ) 
 {
-    elem_t* nl = malloc( sizeof *nl );
+    elem_t* nl = ( elem_t* )malloc( sizeof *nl );
     if( l == NULL )
     {
         nl->letter = c;
@@ -38,5 +38,6 @@ void print_list( list_t l )
         printf( "%c->", tmp->letter );
         tmp = tmp->next;
     }
+	 free(tmp);
     return;
 }

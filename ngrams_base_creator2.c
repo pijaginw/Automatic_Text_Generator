@@ -22,17 +22,19 @@ ngram_t* make_ngram2( wtab_t* wTab, int idx, int rank )
 
 	for( i= 0; i < rank; i++ )
 	{
-		if( (newnGram->size + strlen(wTab->wordsTab[idx]->word)) > newnGram->capacity )
+		if( (newnGram->size + strlen(wTab->wordsTab[idx]->word)+1) > newnGram->capacity )
 		{
-			char* nw = ( char* )realloc( newnGram->ngram, 2 * (newnGram->capacity) * sizeof (char) );
+			char* nw = ( char* )realloc( newnGram->ngram, (newnGram->capacity + INIT_SS) * sizeof (char) );
 			if( nw == NULL )
 				fprintf( stderr, "\nBlad! Nie powiekszono ngramu.\n" );
 
 			newnGram->ngram = nw;
 			tmp = newnGram->capacity;
-			newnGram->capacity *= 2;
+			newnGram->capacity += INIT_SS;
 			for( k = tmp; k < newnGram->capacity; k++ )
 				newnGram->ngram[k] = '\0';
+
+			/*free(nw);*/
 		}
 		newnGram->ngram = strcat( newnGram->ngram, wTab->wordsTab[idx++]->word );
 		newnGram->ngram = strcat( newnGram->ngram, " " );
@@ -57,19 +59,20 @@ suftab_t* make_suftab()
 	nt->size = 0;
 	nt->capacity = INIT_SS;
 
+	/*free(nt);*/
 	return nt;
 }
 
 suftab_t* resize_suftab( suftab_t* s )
 {
-	suftab_t* ns = ( suftab_t* )realloc( s->suffixes, 2 * (s->capacity) * sizeof (int) );
+	int* ns = ( int* )realloc( s->suffixes, 2 * (s->capacity) * sizeof (int) );
 	if( ns == NULL )
 		fprintf( stderr, "\nBlad! Nie powiekszono tablicy sufiksow.\n" );
 
-	ns->capacity *= 2;
-	s = ns;
+	s->capacity *= 2;
+	s->suffixes = ns;
 
-	free(ns);
+	/*free(ns);*/
 	return s;
 }
 
@@ -102,8 +105,6 @@ nbtab_t* create_ngrams_base_tab( wtab_t* wTab, int rank )
 		
 		for( idxtab= 0; idxtab < ngramsBase->size; idxtab++ ) /* iteruje po tablicy n-gramow */
 		{
-			printf( "idxtab %zu\n", idxtab );
-			printf( "-->co jest w tablicy pod idxtab:%s\n", (ngramsBase->ngramsBaseTab[idxtab]).nGram->ngram );
 			if( (strcmp( newnGram->ngram, (ngramsBase->ngramsBaseTab[idxtab]).nGram->ngram )) == 0 )
 			{	
 				istrue = 1;

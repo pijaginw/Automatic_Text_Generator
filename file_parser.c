@@ -33,7 +33,7 @@ wtab_t* resize( wtab_t* t )
     for( i= tmp; i < t->capacity; i++ )
     /*for( i= (t->capacity)/2; i < t->capacity; i++ )*/
         t->wordsTab[i] = init_word_tab();
-    return t;
+	 return t;
 }
 
 wtabs_t* init_word_tab()
@@ -51,10 +51,10 @@ wtabs_t* init_word_tab()
 
 wtabs_t* resizes( wtabs_t* ts )
 {
-    char* nw = realloc( ts->word, 2 * ts->capacity * sizeof * ts->word );
+    char* nw = realloc( ts->word, (ts->capacity+INIT_LENGTH_S) * sizeof * ts->word );
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
-    ts->capacity *= 2;
+    ts->capacity += INIT_LENGTH_S;
 	 ts->word = nw;
     return ts;
 }
@@ -114,6 +114,7 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
             }
         }
     }
+
 	 fclose(infile);
     return wTab;
 }

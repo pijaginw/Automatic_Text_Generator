@@ -91,16 +91,9 @@ int main( int argc, char** argv ) {
 	ngram_t* ngram3 = make_ngram2(wTab, 2, 2);
 	printf( "--ngram:%s\n", ngram3->ngram );
 
-		  nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, 2 );
+		  nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, rankNumber );
 		  print_ngramstab( ngramsBase, wTab );
-		  generate_text( wTab, ngramsBase, 10, 2 );
-/*
-        index = get_random_suffix( ngramsList->nGram->ngram, ngramsList );
-        if( index == -1 )
-            printf( "nie znaleziono sufiksu\n" );
-        else
-            printf( "wylosowany indeks: %d\n", index );
-        
-*/
-    return (EXIT_SUCCESS);
+		  generate_text( wTab, ngramsBase, wordsNumber, rankNumber, rand() );
+    
+	 return (EXIT_SUCCESS);
 }
