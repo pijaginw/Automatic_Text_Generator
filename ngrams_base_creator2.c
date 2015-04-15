@@ -65,24 +65,27 @@ suftab_t* make_suftab()
 
 suftab_t* resize_suftab( suftab_t* s )
 {
-	int* ns = ( int* )realloc( s->suffixes, 2 * (s->capacity) * sizeof (int) );
+	int* ns = ( int* )realloc( s->suffixes, ( INIT_SS + s->capacity) * sizeof (int) );
 	if( ns == NULL )
 		fprintf( stderr, "\nBlad! Nie powiekszono tablicy sufiksow.\n" );
 
-	s->capacity *= 2;
+	s->capacity += INIT_SS;
 	s->suffixes = ns;
 
 	/*free(ns);*/
 	return s;
 }
 
-nbtab_t* create_ngrams_base_tab( wtab_t* wTab, int rank )
+nbtab_t* create_ngrams_base_tab( wtab_t* wTab, char* indBaseFileName, int rank )
 {
-	size_t idx, idxtab;
-	int istrue = 0;
+	size_t idx, idxtab, i, j;
+	int istrue = 0, fcheck = 0, c;
+	char c1 = '#', c2 = '/', c3 = '\n';
 	nbtab_t* ngramsBase;
 	ngram_t* newnGram;
 	ngrams_t* newEl;
+
+	FILE* outfile = fopen( indBaseFileName, "w" );
 
 	ngramsBase = ( nbtab_t* )malloc( sizeof * ngramsBase );
 	if( ngramsBase == NULL )
@@ -99,16 +102,12 @@ nbtab_t* create_ngrams_base_tab( wtab_t* wTab, int rank )
 	{
 		istrue = 0;
 		newnGram = make_ngram2( wTab, idx, rank );
-		printf( "opracowywany ngram:%s\n", newnGram->ngram );
-		printf( "rozmiar tablicy ngramow:%zu\n", ngramsBase->size );
-		printf( "pojemnosc tablicy ngramow:%zu\n\n", ngramsBase->capacity );
 		
 		for( idxtab= 0; idxtab < ngramsBase->size; idxtab++ ) /* iteruje po tablicy n-gramow */
 		{
 			if( (strcmp( newnGram->ngram, (ngramsBase->ngramsBaseTab[idxtab]).nGram->ngram )) == 0 )
 			{	
 				istrue = 1;
-				printf( "znalazlem taki ngram!!\n" );
 				if( ((ngramsBase->ngramsBaseTab[idxtab]).sufTab->size) == ((ngramsBase->ngramsBaseTab[idxtab]).sufTab->capacity ) )
 					(ngramsBase->ngramsBaseTab[idxtab]).sufTab = resize_suftab( (ngramsBase->ngramsBaseTab[idxtab]).sufTab );
 				(ngramsBase->ngramsBaseTab[idxtab]).sufTab->suffixes[ngramsBase->ngramsBaseTab[idxtab].sufTab->size++] = idx+rank;
@@ -127,17 +126,39 @@ nbtab_t* create_ngrams_base_tab( wtab_t* wTab, int rank )
 			newEl->sufTab->suffixes[newEl->sufTab->size++] = idx+rank;
 
 			if( (ngramsBase->size) == (ngramsBase->capacity) ) {
-				ngramsBase->ngramsBaseTab = ( ngrams_t* )realloc( ngramsBase->ngramsBaseTab, 2 * (ngramsBase->capacity) * sizeof * ngramsBase->ngramsBaseTab );
+				ngramsBase->ngramsBaseTab = ( ngrams_t* )realloc( ngramsBase->ngramsBaseTab, (INIT_S + ngramsBase->capacity) * sizeof * ngramsBase->ngramsBaseTab );
 				if( (ngramsBase->ngramsBaseTab) == NULL )
 					fprintf( stderr, "\nBlad! Nie powiekszono tablicy n-gramow.\n" );
 				
-				ngramsBase->capacity *= 2;
+				ngramsBase->capacity += INIT_S;
 			}
 			ngramsBase->ngramsBaseTab[ngramsBase->size] = *newEl;
 			/*printf( "nowy ngram:%s\n", ngramsBase->ngramsBaseTab[idx].nGram->ngram );*/
 			ngramsBase->size++;
 		}
 	}
+	for( i= 0; i < ngramsBase->size; i++ )
+	{
+		fcheck = 0;
+		if( (fcheck = fputs( ngramsBase->ngramsBaseTab[i].nGram->ngram, outfile )) == EOF )
+			fprintf( stderr, "\nBlad! Nie zapisano tekstu do bazy posredniej.\n" );
+		
+		c = fputc( c1, outfile );
+		c = fputc( c3, outfile );
+		for( j= 0; j < ngramsBase->ngramsBaseTab[i].sufTab->size; j++ )
+		{
+			fcheck = 0;
+			if( (fcheck = fputs( wTab->wordsTab[ngramsBase->ngramsBaseTab[i].sufTab->suffixes[j]]->word, outfile )) == EOF )
+				fprintf( stderr, "\nBlad! Nie zapisano sufiksu do bazy posredniej.\n" );
+			
+			c = fputc( c2, outfile ); 
+			if( j == (ngramsBase->ngramsBaseTab[i].sufTab->size-1) )
+				c = fputc( c2, outfile );
+			c = fputc( c3, outfile );
+		}
+	}
+
+	fclose(outfile);
 	return ngramsBase;
 }
 
@@ -146,8 +167,92 @@ void print_ngramstab( nbtab_t* ngramsBase, wtab_t* wTab )
 	size_t i;
 	printf( "\n\ntest tablicy ngramow:\n" );
 	for( i= 0; i < ngramsBase->size; i++ ) {
-		printf( "oto ngram %zu:%s\n", i, ngramsBase->ngramsBaseTab[i].nGram->ngram );
+		printf( "--->ngram %zu:%s\n", i, ngramsBase->ngramsBaseTab[i].nGram->ngram );
 	}
 	return;
 }
 
+/*nbtab_t* read_ngrams_from_base( char* indBaseFileName, int rank )
+{
+	char* newLine[1024], *newnGram, *tmp, symb;
+	size_t cnt;
+	int index = 0, idx = 0, isLast;
+	nbtab_t* ngramsBase = NULL;
+	ngrams_t* newEl = NULL;
+	FILE* infile = fopen( indBaseFileName, "r" );
+
+	ngramsBase = ( nbtab_t* )malloc( sizeof * ngramsBase );
+	if( ngramsBase == NULL )
+		fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla struktury tablicy ngramow.\n" );
+
+	ngramsBase->ngramsBaseTab = ( ngrams_t* )malloc( INIT_S * sizeof * ngramsBase->ngramsBaseTab );
+	if( (ngramsBase->ngramsBaseTab) == NULL )
+		fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla tablicy struktur ngramow.\n" );
+
+	ngramsBase->size = 0;
+	ngramsBase->capacity = INIT_S;
+
+	newLine = ( char* )memset( newLine, '\0', 1024 );
+
+	while( (newLine = fgets( newLine, 1024, infile )) != NULL )
+	{	
+		isLast = 0;
+		if( (symb = strrchr( newLine, '#' )) != NULL )*/ /*wczytuje n-gram*/
+/*		{
+			cnt = 0;
+			tmp = newLine;
+			while( (symb = *(tmp++)) != '#' )
+				cnt++;
+
+			newEl = ( ngrams_t* )malloc( sizeof * newEl );
+			if( newEl == NULL )
+				fprintf( stderr, "\nBlad! Nie przydzielono pamieci dla nowego elementu tablicy.\n" );
+
+			newEl->nGram = ( ngram_t* )malloc( sizeof * newnGram );
+			if( (newEl->nGram) == NULL )
+				fprintf( stderr, "\bBlad! Nie przydzielono pamieci dla struktury ngramu.\n" );
+
+			newEl->nGram->ngram = ( char* )malloc( (cnt+1) * sizeof (char) );
+			if( (newEl->nGram->ngram) == NULL )
+				fprintf( stderr, "\nBlad! Brak pamieci dla ngramu.\n" );
+
+			newEl->nGram->size = cnt;
+			newEl->nGram->capacity = INIT_SS;*/ /*troche zle, ale nie ma to znaczenia */
+/*			newEl->nGram->ngram = ( char* )memset( newEl->nGram->ngram, '\0', cnt+1 );
+			newEl->nGram->ngram = strncpy( newEl->nGram->ngram, newLine, cnt );
+
+			newEl->sufTab = make_suftab();
+
+			if( (ngramsBase->size) == (ngramsBase->capacity) ) {
+				ngramsBase->ngramsBaseTab = ( ngrams_t* )realloc( ngramsBase->ngramsBaseTab, (INIT_S + ngramsBase->capacity) * sizeof * ngramsBase->ngramsBaseTab );
+				if( (ngramsBase->ngramsBaseTab) == NULL )
+					fprintf( stderr, "\nBlad! Nie powiekszono tablicy n-gramow.\n" );
+				
+				ngramsBase->capacity += INIT_S;
+			}
+			ngramsBase->ngramsBaseTab[ngramsBase->size] = newEl;*/
+			/*printf( "nowy ngram:%s\n", ngramsBase->ngramsBaseTab[idx].nGram->ngram );*/
+/*
+		}
+		else if( (symb = strrchr( newLine, '/' )) != NULL )
+		{
+			if( (*(--newLine)) == '/' ) 
+				isLast = 1;
+
+			cnt = 0;
+			tmp = newLine;
+			while( (symb = *(tmp++)) != '/' )
+			{
+				suf[cnt++] = symb;
+			}
+
+			for( idx= 0; idx < wTab->size; idx++ )
+				if( (strcmp( 
+
+			if( isLast == 1 )
+				ngramsBase->size++;
+
+
+		}
+	}
+}*/

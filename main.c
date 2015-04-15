@@ -6,8 +6,8 @@
  */
 
 #include "file_parser.h"
-#include "ngrams_base_creator2.h"
 #include "generator.h"
+#include "statistics.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,13 +19,13 @@ int main( int argc, char** argv ) {
     int howManyFiles = 0;
     int rankNumber, wordsNumber, paragraphNumber;
     char* filesNames[1];
-    char* basefileName = NULL;
+    char* outputFileName = NULL, *indBaseFileName = NULL;
     char* nextFile, *file;
-    int index;
+    int index, maxidx, m;
     
     wtab_t* wTab = init_tab();
     
-    while(( opt = getopt( argc, argv, "t:m:n:l:p:" )) != -1) 
+    while(( opt = getopt( argc, argv, "t:m:n:l:p:b:" )) != -1) 
     {
         switch(opt)
         {
@@ -57,43 +57,29 @@ int main( int argc, char** argv ) {
                 paragraphNumber = atoi(optarg);
                 break;
             case 'p':
-                basefileName = optarg;
+                outputFileName = optarg;
                 break;
-        }
-    }
-    printf("opcja rzedu ngramow: %d\nopcja liczby slow: %d\nile plikow: %d\n"
-            "nazwa pliku: %s\nnazwa bazy: %s\n",rankNumber, wordsNumber, howManyFiles, file, basefileName);
+				case 'b':
+					indBaseFileName = optarg;
+					break;
+       }
+   }
+   printf("opcja rzedu ngramow: %d\nopcja liczby slow: %d\nile plikow: %d\n"
+            "nazwa pliku: %s\nnazwa bazy: %s\n",rankNumber, wordsNumber, howManyFiles, file, outputFileName);
     
-    if( optind < argc )
-        fprintf( stderr, "\nPodano zle argumenty!\n" );
+   if( optind < argc )
+       fprintf( stderr, "\nPodano zle argumenty!\n" );
     
-/*
-    if( file != NULL ) {
-        FILE *inf = NULL;
-    }
-*/
-    
-    wTab = parse_file( filesNames, fcount, wTab );
-    printf( "size wTab w main --- %zu\n", wTab->size);
-	 printf( "co siedzi w wTab 1-->%s\n", wTab->wordsTab[0]->word );
+   wTab = parse_file( filesNames, fcount, wTab );
+	nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, indBaseFileName, rankNumber );
+	print_ngramstab( ngramsBase, wTab );
+	generate_text( wTab, ngramsBase, wordsNumber, rankNumber, rand(), outputFileName );
+	maxidx = most_freq_ngram( ngramsBase );
 
-    printf( "\n-----%c\n", wTab->wordsTab[0]->word[0]);
-
-	int m;
-	printf("-->size--%zu\n", wTab->size);
-
-	ngram_t* ngram1 = make_ngram2(wTab, 0, 2);
-	printf( "--ngram:%s\n", ngram1->ngram );
-
-	ngram_t* ngram2 = make_ngram2(wTab, 1, 2);
-	printf( "--ngram:%s\n", ngram2->ngram );
-
-	ngram_t* ngram3 = make_ngram2(wTab, 2, 2);
-	printf( "--ngram:%s\n", ngram3->ngram );
-
-		  nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, rankNumber );
-		  print_ngramstab( ngramsBase, wTab );
-		  generate_text( wTab, ngramsBase, wordsNumber, rankNumber, rand() );
+	for( m= 0; m < wTab->size; m++ )
+		printf( "%s	", wTab->wordsTab[m]->word );
+	printf( "\n\n" );
+	printf( "stats: najczęściej występujący n-gram: \"%s\"\n\n", ngramsBase->ngramsBaseTab[maxidx].nGram->ngram );
     
 	 return (EXIT_SUCCESS);
 }

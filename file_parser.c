@@ -24,17 +24,28 @@ wtab_t* resize( wtab_t* t )
 {
     int i;
     size_t tmp = t->capacity;
-    wtabs_t** newwordsTab = realloc( t->wordsTab, 2 * t->capacity * sizeof **newwordsTab );
+    wtabs_t** newwordsTab = realloc( t->wordsTab, 2 * (t->capacity) * sizeof (wtabs_t**) );
     if( newwordsTab == NULL )
         fprintf( stderr, "\nBlad! Nie powiekszono tablicy słów!\n" );
     t->capacity *= 2;
     t->wordsTab = newwordsTab;
-	 /*newwordsTab = t->wordsTab;*/
     for( i= tmp; i < t->capacity; i++ )
-    /*for( i= (t->capacity)/2; i < t->capacity; i++ )*/
         t->wordsTab[i] = init_word_tab();
 	 return t;
 }
+
+/*wtab_t* resize( wtab_t* t )
+{
+	int i;
+	size_t tmp = t->capacity;
+	t->wordsTab = ( wtabs_t** )realloc( t->wordsTab, 2 * t->capacity * sizeof (wtab_t*) );
+	if( (t->wordsTab) == NULL )
+		fprintf( stderr, "\nBlad! Nie powiekszono tablicy slow.\n" );
+	t->capacity *= 2;
+	for( i= 0; i < t->capacity; i++ )
+		t->wordsTab[i] = init_word_tab();
+	return t;
+}*/
 
 wtabs_t* init_word_tab()
 {
@@ -46,12 +57,13 @@ wtabs_t* init_word_tab()
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     nw->size = 0;
     nw->capacity = INIT_LENGTH_S;
+	 nw->word = ( char* )memset( nw->word, '\0', INIT_LENGTH_S );
     return nw;
 }
 
 wtabs_t* resizes( wtabs_t* ts )
 {
-    char* nw = realloc( ts->word, (ts->capacity+INIT_LENGTH_S) * sizeof * ts->word );
+    char* nw = realloc( ts->word, (ts->capacity+INIT_LENGTH_S+1) * sizeof * ts->word );
     if( nw == NULL )
         fprintf( stderr, "\nBlad! Brak pamieci dla tablicy słowa!\n" );
     ts->capacity += INIT_LENGTH_S;
@@ -66,15 +78,14 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
     int wordscount = 0; /*ilośc słów w tekstach bazowych */
     int i;
     
-    list_t list = NULL;
     FILE* infile = NULL;
+	 list_t list = NULL;
     
     wTab = init_tab();
     
     for( i= 0; i < filesCounter; i++ )
     {
         infile = fopen( filesTab[i], "r" );
-        
         printf("zaczynam czytac plik\n");
         
         if( infile == NULL )
@@ -82,34 +93,29 @@ wtab_t* parse_file( char** filesTab, int filesCounter, wtab_t* wTab )
     
         while( (symb = fgetc(infile)) != EOF )
         {
-            printf("pobieram symbol\n");
-            if( (symb >= 'A' && symb <= 'Z') || (symb >= 'a' && symb <= 'z') || symb == '.' || symb == ',' )
+				if( isgraph(symb) )
             {
-                printf("symbol jest literą\n");
                 list = add_letter(list, symb);
                 scount++;
             }
             if( isspace(symb) )
             {
                 int i;
-                /*wTab = init_tab();*/
                 if( (wTab->size) == (wTab->capacity) )
                     wTab = resize(wTab);
                 for( i= 0; i < scount; i++ ) {
-                    printf("wkładam symbol %d do tablicy slowa", i);
+                    printf("(symbol %d)", i);
 
                     if( (wTab->wordsTab[wordscount]->size) == (wTab->wordsTab[wordscount]->capacity) )
                         wTab->wordsTab[wordscount] = resizes(wTab->wordsTab[wordscount]);
                     wTab->wordsTab[wordscount]->word[i] = list->letter;
-						  printf( "-->%c\n", wTab->wordsTab[wordscount]->word[i] );
+						  printf( "-->%c   ", wTab->wordsTab[wordscount]->word[i] );
                     wTab->wordsTab[wordscount]->size++;
                     list = get_letter(list);
                 }
-                printf("po zapakowaniu slowa %d, %s\n", wordscount+1, wTab->wordsTab[wordscount]->word );
+                printf("\nkolejne (%d) slowo w tablicy:%s\n", wordscount+1, wTab->wordsTab[wordscount]->word );
                 wordscount++;
-                printf( "----%d----\n", wordscount );
                 wTab->size++;
-                /*wTab->wordsTab[wordscount]->size = 0;*/
                 scount = 0;
             }
         }
