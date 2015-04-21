@@ -1,110 +1,1878 @@
-Ala ma #
-kota/
-psa,/
-dom./
-kanarka./
-kangura,/
-siostry/
-ksiazki.//
-ma kota #
-oraz//
-kota oraz #
-rybki.//
-oraz rybki. #
-Ala//
-rybki. Ala #
-ma//
-ma psa, #
-jej/
-jej//
-psa, jej #
-kot/
-kot	ý//
-jej kot #
-nie//
-kot nie #
-lubi//
-nie lubi #
-jej//
-lubi jej #
-psa.//
-jej psa. #
-Ola//
-psa. Ola #
-ma//
-Ola ma #
-kota,/
-kangura,//
-ma kota, #
-psa//
-kota, psa #
-i//
-psa i #
-kaaanarki.//
-i kaaanarki. #
-Ala	ý//
-kaaanarki.Ala	ý #
-ma//
-Ala	ý ma #
-siostre//
-ma siostre #
-i//
-siostre i #
-brata.//
-i brata. #
-Ala/
-Ala//
-brata. Ala #
-ma/
-ma//
-ma dom. #
-Ala//
-dom. Ala #
-ma//
-ma kanarka. #
-Ala//
-kanarka. Ala #
-ma//
-ma kangura, #
-kwiatki./
-dom//
-kangura, kwiatki. #
-Ala//
-kwiatki. Ala #
-nie//
-Ala nie #
-ma/
-ma//
-nie ma #
-psa,/
-kota.//
-jej kot	ý #
-nie	ý//
-kot	ý nie	ý #
-lubiý//
-nie	ý lubiý #
-jej	ý//
-lubiý jej	ý #
-rybek.//
-jej	ý rybek. #
-Ola//
-rybek. Ola #
-ma//
-kangura, dom #
-i//
-dom i #
-sad.//
-i sad. #
-Ala//
-sad. Ala #
-ma//
-ma siostry #
-i//
-siostry i #
-brata.//
-ma ksiazki. #
-Ala//
-ksiazki. Ala #
-nie//
-ma kota. #
+Alice was beginning #
+to//
+was beginning to #
+get//
+beginning to get #
+very//
+to get very #
+tired//
+get very tired #
+of//
+very tired of #
+sitting//
+tired of sitting #
+by//
+of sitting by #
+her//
+sitting by her #
+sister//
+by her sister #
+on//
+her sister on #
+the//
+sister on the #
+bank,//
+on the bank, #
+and//
+the bank, and #
+of//
+bank, and of #
+having//
+and of having #
+nothing//
+of having nothing #
+to//
+having nothing to #
+do.//
+nothing to do. #
+Onceð//
+to do. Onceð #
+or//
+do. Onceð or #
+twice//
+Onceð or twice #
+she//
+or twice she #
+had//
+twice she had #
+peeped//
+she had peeped #
+into//
+had peeped into #
+the//
+peeped into the #
+book//
+into the book #
+her//
+the book her #
+sister//
+book her sister #
+was//
+her sister was #
+reading,//
+sister was reading, #
+but//
+was reading, but #
+it//
+reading, but it #
+had//
+but it had #
+no//
+it had no #
+pictures//
+had no pictures #
+or//
+no pictures or #
+conversations//
+pictures or conversations #
+in//
+or conversations in #
+it,//
+conversations in it, #
+"andð//
+in it, "andð #
+whatð//
+it, "andð whatð #
+is//
+"andð whatð is #
+the//
+whatð is the #
+use//
+is the use #
+of//
+the use of #
+a//
+use of a #
+book,"//
+of a book," #
+thought//
+a book," thought #
+Alice,//
+book," thought Alice, #
+"without//
+thought Alice, "without #
+pictures//
+Alice, "without pictures #
+or//
+"without pictures or #
+conversations?".//
+pictures or conversations?". #
+//
+or conversations?".  #
+So//
+conversations?".  So #
+she//
+ So she #
+was//
+So she was #
+considering//
+she was considering #
+in//
+was considering in #
+her//
+considering in her #
+own//
+in her own #
+mind//
+her own mind #
+(as//
+own mind (as #
+well//
+mind (as well #
+as//
+(as well as #
+she//
+well as she #
+could,//
+as she could, #
+for//
+she could, for #
+the//
+could, for the #
+day//
+for the day #
+made//
+the day made #
+her//
+day made her #
+feel//
+made her feel #
+very//
+her feel very #
+sleepy//
+feel very sleepy #
+and//
+very sleepy and #
+stupid),//
+sleepy and stupid), #
+whether//
+and stupid), whether #
+the//
+stupid), whether the #
+pleasure//
+whether the pleasure #
+of//
+the pleasure of #
+making//
+pleasure of making #
+a//
+of making a #
+daisy-chain//
+making a daisy-chain #
+would//
+a daisy-chain would #
+be//
+daisy-chain would be #
+worth//
+would be worth #
+the//
+be worth the #
+trouble//
+worth the trouble #
+of//
+the trouble of #
+getting//
+trouble of getting #
+up//
+of getting up #
+and//
+getting up and #
+picking//
+up and picking #
+the//
+and picking the #
+daisies,//
+picking the daisies, #
+when//
+the daisies, when #
+suddenly//
+daisies, when suddenly #
+a//
+when suddenly a #
+White//
+suddenly a White #
+Rabbit//
+a White Rabbit #
+with//
+White Rabbit with #
+pink//
+Rabbit with pink #
+eyes//
+with pink eyes #
+ran//
+pink eyes ran #
+close//
+eyes ran close #
+by//
+ran close by #
+her.//
+close by her. #
+There//
+by her. There #
+was//
+her. There was #
+nothing//
+There was nothing #
+so/
+else//
+was nothing so #
+very//
+nothing so very #
+remarkable//
+so very remarkable #
+in//
+very remarkable in #
+that,//
+remarkable in that, #
+nor//
+in that, nor #
+did//
+that, nor did #
+Alice//
+nor did Alice #
+think//
+did Alice think #
+it//
+Alice think it #
+so//
+think it so #
+very//
+it so very #
+much//
+so very much #
+out//
+very much out #
+of//
+much out of #
+the//
+out of the #
+way//
+of the way #
+to//
+the way to #
+hear//
+way to hear #
+the//
+to hear the #
+Rabbit//
+hear the Rabbit #
+say//
+the Rabbit say #
+to//
+Rabbit say to #
+itself,//
+say to itself, #
+"Oh//
+to itself, "Oh #
+dear!//
+itself, "Oh dear! #
+Oh//
+"Oh dear! Oh #
+dear!//
+dear! Oh dear! #
+I//
+Oh dear! I #
+shall//
+dear! I shall #
+be//
+I shall be #
+too//
+shall be too #
+late!"//
+be too late!" #
+But//
+too late!" But #
+when//
+late!" But when #
+the//
+But when the #
+Rabbit//
+when the Rabbit #
+actually//
+the Rabbit actually #
+took//
+Rabbit actually took #
+a//
+actually took a #
+watch//
+took a watch #
+out//
+a watch out #
+of//
+watch out of #
+its//
+out of its #
+waistcoat-pocket//
+of its waistcoat-pocket #
+and//
+its waistcoat-pocket and #
+looked//
+waistcoat-pocket and looked #
+at//
+and looked at #
+it//
+looked at it #
+and//
+at it and #
+thenð//
+it and thenð #
+hurried//
+and thenð hurried #
+on,//
+thenð hurried on, #
+Alice//
+hurried on, Alice #
+started//
+on, Alice started #
+to//
+Alice started to #
+her//
+started to her #
+feet,//
+to her feet, #
+for//
+her feet, for #
+it//
+feet, for it #
+flashed//
+for it flashed #
+across//
+it flashed across #
+her//
+flashed across her #
+mindð//
+across her mindð #
+thatð//
+her mindð thatð #
+she//
+mindð thatð she #
+had//
+thatð she had #
+never//
+she had never #
+before//
+had never before #
+seen//
+never before seen #
+a//
+before seen a #
+rabbit//
+seen a rabbit #
+with//
+a rabbit with #
+either//
+rabbit with either #
+a//
+with either a #
+waistcoat-pocket,//
+either a waistcoat-pocket, #
+or//
+a waistcoat-pocket, or #
+a//
+waistcoat-pocket, or a #
+watch//
+or a watch #
+to//
+a watch to #
+take//
+watch to take #
+out//
+to take out #
+of//
+take out of #
+it,//
+out of it, #
+and,//
+of it, and, #
+burning//
+it, and, burning #
+with//
+and, burning with #
+curiosity,//
+burning with curiosity, #
+she//
+with curiosity, she #
+ran//
+curiosity, she ran #
+across//
+she ran across #
+the//
+ran across the #
+field//
+across the field #
+after//
+the field after #
+it//
+field after it #
+and//
+after it and #
+was//
+it and was #
+just//
+and was just #
+in/
+in//
+was just in #
+time/
+time//
+just in time #
+to/
+to//
+in time to #
+see/
+hear//
+time to see #
+it//
+to see it #
+pop//
+see it pop #
+down//
+it pop down #
+a//
+pop down a #
+large//
+down a large #
+rabbit-hole,//
+a large rabbit-hole, #
+under//
+large rabbit-hole, under #
+the//
+rabbit-hole, under the #
+hedge.//
+under the hedge. #
+In//
+the hedge. In #
+another//
+hedge. In another #
+moment,//
+In another moment, #
+down//
+another moment, down #
+went//
+moment, down went #
+Alice//
+down went Alice #
+after//
+went Alice after #
+it!//
+Alice after it! #
+//
+after it!  #
+The//
+it!  The #
+rabbit-hole//
+ The rabbit-hole #
+went//
+The rabbit-hole went #
+straight//
+rabbit-hole went straight #
+on//
+went straight on #
+like//
+straight on like #
+a//
+on like a #
+tunnel//
+like a tunnel #
+for//
+a tunnel for #
+some//
+tunnel for some #
+way//
+for some way #
+and//
+some way and #
+then//
+way and then #
+dipped//
+and then dipped #
+suddenly//
+then dipped suddenly #
+down,//
+dipped suddenly down, #
+so//
+suddenly down, so #
+suddenly//
+down, so suddenly #
+that//
+so suddenly that #
+Alice//
+suddenly that Alice #
+had//
+that Alice had #
+not//
+Alice had not #
+a//
+had not a #
+moment//
+not a moment #
+to/
+to//
+a moment to #
+think/
+be//
+moment to think #
+about//
+to think about #
+stopping//
+think about stopping #
+herself//
+about stopping herself #
+before//
+stopping herself before #
+she//
+herself before she #
+found//
+before she found #
+herself//
+she found herself #
+falling//
+found herself falling #
+down//
+herself falling down #
+what//
+falling down what #
+seemed//
+down what seemed #
+to//
+what seemed to #
+be//
+seemed to be #
+a//
+to be a #
+very//
+be a very #
+deep//
+a very deep #
+well.//
+very deep well. #
+Either//
+deep well. Either #
+the//
+well. Either the #
+well//
+Either the well #
+was//
+the well was #
+very//
+well was very #
+deep,//
+was very deep, #
+or//
+very deep, or #
+she//
+deep, or she #
+fell//
+or she fell #
+very//
+she fell very #
+slowly,//
+fell very slowly, #
+for//
+very slowly, for #
+she//
+slowly, for she #
+had//
+for she had #
+plenty//
+she had plenty #
+of//
+had plenty of #
+time,//
+plenty of time, #
+as//
+of time, as #
+she//
+time, as she #
+went//
+as she went #
+down,//
+she went down, #
+to//
+went down, to #
+look//
+down, to look #
+about//
+to look about #
+her.//
+look about her. #
+First,//
+about her. First, #
+she//
+her. First, she #
+tried//
+First, she tried #
+to//
+she tried to #
+make//
+tried to make #
+out//
+to make out #
+what//
+make out what #
+she//
+out what she #
+was//
+what she was #
+coming//
+she was coming #
+to,//
+was coming to, #
+but//
+coming to, but #
+it//
+to, but it #
+was//
+but it was #
+too/
+all/
+too//
+it was too #
+dark/
+slippery,//
+was too dark #
+to//
+too dark to #
+see//
+dark to see #
+anything;//
+to see anything; #
+thenð//
+see anything; thenð #
+she//
+anything; thenð she #
+looked//
+thenð she looked #
+at//
+she looked at #
+the//
+looked at the #
+sides//
+at the sides #
+of//
+the sides of #
+the//
+sides of the #
+wellð//
+of the wellð #
+and//
+the wellð and #
+noticed//
+wellð and noticed #
+thatð//
+and noticed thatð #
+theyð//
+noticed thatð theyð #
+wereð//
+thatð theyð wereð #
+filled//
+theyð wereð filled #
+withð//
+wereð filled withð #
+cupboards//
+filled withð cupboards #
+and//
+withð cupboards and #
+book-shelves;//
+cupboards and book-shelves; #
+hereð//
+and book-shelves; hereð #
+and//
+book-shelves; hereð and #
+there//
+hereð and there #
+she//
+and there she #
+saw//
+there she saw #
+mapsð//
+she saw mapsð #
+and//
+saw mapsð and #
+pictures//
+mapsð and pictures #
+hungð//
+and pictures hungð #
+uponð//
+pictures hungð uponð #
+pegs.//
+hungð uponð pegs. #
+She//
+uponð pegs. She #
+tookð//
+pegs. She tookð #
+downð//
+She tookð downð #
+a//
+tookð downð a #
+jar//
+downð a jar #
+fromð//
+a jar fromð #
+one//
+jar fromð one #
+of//
+fromð one of #
+the//
+one of the #
+shelves/
+cupboards/
+legs//
+of the shelves #
+as//
+the shelves as #
+she//
+shelves as she #
+passed.//
+as she passed. #
+It//
+she passed. It #
+was//
+passed. It was #
+labeled//
+It was labeled #
+"ORANGE//
+was labeled "ORANGE #
+MARMALADE,"//
+labeled "ORANGE MARMALADE," #
+but,//
+"ORANGE MARMALADE," but, #
+to//
+MARMALADE," but, to #
+her//
+but, to her #
+great//
+to her great #
+disappointment,//
+her great disappointment, #
+it//
+great disappointment, it #
+was//
+disappointment, it was #
+empty;//
+it was empty; #
+she//
+was empty; she #
+did//
+empty; she did #
+not//
+she did not #
+like//
+did not like #
+to//
+not like to #
+drop//
+like to drop #
+the//
+to drop the #
+jar,//
+drop the jar, #
+so//
+the jar, so #
+managed//
+jar, so managed #
+to//
+so managed to #
+put//
+managed to put #
+it//
+to put it #
+into//
+put it into #
+one//
+it into one #
+of//
+into one of #
+the//
+of the cupboards #
+as//
+the cupboards as #
+she//
+cupboards as she #
+fell//
+as she fell #
+past//
+she fell past #
+it.//
+fell past it. #
+Down,//
+past it. Down, #
+down,//
+it. Down, down, #
+down!//
+Down, down, down! #
+//
+down, down!  #
+Would//
+down!  Would #
+the//
+ Would the #
+fall//
+Would the fall #
+never//
+the fall never #
+come//
+fall never come #
+to//
+never come to #
+an//
+come to an #
+end?//
+to an end? #
+There//
+an end? There #
+was//
+end? There was #
+nothing//
+was nothing else #
+to//
+nothing else to #
+do,//
+else to do, #
+so//
+to do, so #
+Alice//
+do, so Alice #
+soon//
+so Alice soon #
+began//
+Alice soon began #
+talking//
+soon began talking #
+to//
+began talking to #
+herself.//
+talking to herself. #
+"Dinah'll//
+to herself. "Dinah'll #
+miss//
+herself. "Dinah'll miss #
+me//
+"Dinah'll miss me #
+very//
+miss me very #
+much//
+me very much #
+to-night,//
+very much to-night, #
+I//
+much to-night, I #
+should//
+to-night, I should #
+think!"//
+I should think!" #
+(Dinah//
+should think!" (Dinah #
+was//
+think!" (Dinah was #
+the//
+(Dinah was the #
+cat.)//
+was the cat.) #
+"I//
+the cat.) "I #
+hope//
+cat.) "I hope #
+they'll//
+"I hope they'll #
+remember//
+hope they'll remember #
+her//
+they'll remember her #
+saucer//
+remember her saucer #
+of//
+her saucer of #
+milk//
+saucer of milk #
+at//
+of milk at #
+tea-time.//
+milk at tea-time. #
+Dinah,//
+at tea-time. Dinah, #
+my//
+tea-time. Dinah, my #
+dear,//
+Dinah, my dear, #
+I//
+my dear, I #
+wish//
+dear, I wish #
+you//
+I wish you #
+were//
+wish you were #
+down//
+you were down #
+here//
+were down here #
+with//
+down here with #
+me!"//
+here with me!" #
+Alice//
+with me!" Alice #
+felt//
+me!" Alice felt #
+that//
+Alice felt that #
+she//
+felt that she #
+was//
+that she was #
+dozing//
+she was dozing #
+off,//
+was dozing off, #
+when//
+dozing off, when #
+suddenly,//
+off, when suddenly, #
+thump!//
+when suddenly, thump! #
+thump!//
+suddenly, thump! thump! #
+down//
+thump! thump! down #
+she//
+thump! down she #
+came//
+down she came #
+upon//
+she came upon #
+a//
+came upon a #
+heap//
+upon a heap #
+of//
+a heap of #
+sticks//
+heap of sticks #
+and//
+of sticks and #
+dry//
+sticks and dry #
+leaves,//
+and dry leaves, #
+and//
+dry leaves, and #
+the//
+leaves, and the #
+fall//
+and the fall #
+was//
+the fall was #
+over.//
+fall was over. #
+Alice//
+was over. Alice #
+was//
+over. Alice was #
+not//
+Alice was not #
+a//
+was not a #
+bit/
+moment//
+not a bit #
+hurt,//
+a bit hurt, #
+and//
+bit hurt, and #
+she//
+hurt, and she #
+jumped//
+and she jumped #
+up//
+she jumped up #
+in//
+jumped up in #
+a//
+up in a #
+moment.//
+in a moment. #
+She//
+a moment. She #
+looked//
+moment. She looked #
+up,//
+She looked up, #
+but//
+looked up, but #
+it//
+up, but it #
+was//
+it was all #
+dark//
+was all dark #
+overhead;//
+all dark overhead; #
+before//
+dark overhead; before #
+her//
+overhead; before her #
+was//
+before her was #
+another//
+her was another #
+long//
+was another long #
+passage//
+another long passage #
+and//
+long passage and #
+the//
+passage and the #
+White//
+and the White #
+Rabbit//
+the White Rabbit #
+was//
+White Rabbit was #
+still//
+Rabbit was still #
+in//
+was still in #
+sight,//
+still in sight, #
+hurrying//
+in sight, hurrying #
+down//
+sight, hurrying down #
+it.//
+hurrying down it. #
+There//
+down it. There #
+was//
+it. There was #
+not//
+There was not #
+a//
+moment to be #
+lost.//
+to be lost. #
+Away//
+be lost. Away #
+went//
+lost. Away went #
+Alice//
+Away went Alice #
+like//
+went Alice like #
+the//
+Alice like the #
+wind//
+like the wind #
+and//
+the wind and #
+was//
+wind and was #
+just//
+time to hear #
+it//
+to hear it #
+say,//
+hear it say, #
+as//
+it say, as #
+it//
+say, as it #
+turned//
+as it turned #
+a//
+it turned a #
+corner,//
+turned a corner, #
+"Oh,//
+a corner, "Oh, #
+my//
+corner, "Oh, my #
+ears//
+"Oh, my ears #
+and//
+my ears and #
+whiskers,//
+ears and whiskers, #
+how//
+and whiskers, how #
+late//
+whiskers, how late #
+it's//
+how late it's #
+getting!"//
+late it's getting!" #
+She//
+it's getting!" She #
+was//
+getting!" She was #
+close//
+She was close #
+behind//
+was close behind #
+it//
+close behind it #
+when//
+behind it when #
+she//
+it when she #
+turned//
+when she turned #
+the//
+she turned the #
+corner,//
+turned the corner, #
+but//
+the corner, but #
+the//
+corner, but the #
+Rabbit//
+but the Rabbit #
+was//
+the Rabbit was #
+no//
+Rabbit was no #
+longer//
+was no longer #
+to//
+no longer to #
+be//
+longer to be #
+seen.//
+to be seen. #
+She//
+be seen. She #
+found//
+seen. She found #
+herself//
+She found herself #
+in//
+found herself in #
+a//
+herself in a #
+long,//
+in a long, #
+low//
+a long, low #
+hall,//
+long, low hall, #
+which//
+low hall, which #
+was//
+hall, which was #
+lit//
+which was lit #
+up//
+was lit up #
+by//
+lit up by #
+a//
+up by a #
+row//
+by a row #
+of//
+a row of #
+lamps//
+row of lamps #
+hanging//
+of lamps hanging #
+from//
+lamps hanging from #
+the//
+hanging from the #
+roof.//
+from the roof. #
+There//
+the roof. There #
+were//
+roof. There were #
+doors//
+There were doors #
+all//
+were doors all #
+'round//
+doors all 'round #
+the//
+all 'round the #
+hall,//
+'round the hall, #
+but//
+the hall, but #
+they//
+hall, but they #
+were//
+but they were #
+all//
+they were all #
+locked;//
+were all locked; #
+and//
+all locked; and #
+when//
+locked; and when #
+Alice//
+and when Alice #
+had//
+when Alice had #
+been//
+Alice had been #
+all//
+had been all #
+the//
+been all the #
+way//
+all the way #
+down//
+the way down #
+one//
+way down one #
+side//
+down one side #
+and//
+one side and #
+up//
+side and up #
+the//
+and up the #
+other,//
+up the other, #
+trying//
+the other, trying #
+every//
+other, trying every #
+door,//
+trying every door, #
+she//
+every door, she #
+walked//
+door, she walked #
+sadly//
+she walked sadly #
+down//
+walked sadly down #
+the//
+sadly down the #
+middle,//
+down the middle, #
+wondering//
+the middle, wondering #
+how//
+middle, wondering how #
+she//
+wondering how she #
+was//
+how she was #
+everð//
+she was everð #
+to//
+was everð to #
+get//
+everð to get #
+out//
+to get out #
+again.//
+get out again. #
+Alice//
+out again. Alice #
+wentð//
+again. Alice wentð #
+backð//
+Alice wentð backð #
+to//
+wentð backð to #
+the//
+backð to the #
+table,//
+to the table, #
+//
+the table,  #
+halfð//
+table,  halfð #
+hoping//
+ halfð hoping #
+she//
+halfð hoping she #
+might//
+hoping she might #
+findð//
+she might findð #
+another//
+might findð another #
+key//
+findð another key #
+on//
+another key on #
+it,//
+key on it, #
+or//
+on it, or #
+at//
+it, or at #
+any//
+or at any #
+rate,//
+at any rate, #
+a//
+any rate, a #
+bookð//
+rate, a bookð #
+of//
+a bookð of #
+rules//
+bookð of rules #
+for//
+of rules for #
+shutting//
+rules for shutting #
+people//
+for shutting people #
+up//
+shutting people up #
+likeð//
+people up likeð #
+telescopes.//
+up likeð telescopes. #
+Thisð//
+likeð telescopes. Thisð #
+timeð//
+telescopes. Thisð timeð #
+she//
+Thisð timeð she #
+found//
+timeð she found #
+a//
+she found a #
+little//
+found a little #
+bottle//
+a little bottle #
+on//
+little bottle on #
+it//
+bottle on it #
+("which//
+on it ("which #
+certainly//
+it ("which certainly #
+was//
+("which certainly was #
+not//
+certainly was not #
+hereð//
+was not hereð #
+before,"//
+not hereð before," #
+saidð//
+hereð before," saidð #
+Alice),//
+before," saidð Alice), #
+and//
+saidð Alice), and #
+tiedð//
+Alice), and tiedð #
+'round//
+and tiedð 'round #
+the//
+tiedð 'round the #
+neckð//
+'round the neckð #
+of//
+the neckð of #
+the//
+neckð of the #
+bottle//
+of the bottle #
+was//
+the bottle was #
+a//
+bottle was a #
+paper//
+was a paper #
+label,//
+a paper label, #
+withð//
+paper label, withð #
+the//
+label, withð the #
+words//
+withð the words #
+"DRINK//
+the words "DRINK #
+ME"//
+words "DRINK ME" #
+beautifully//
+"DRINK ME" beautifully #
+printed//
+ME" beautifully printed #
+on//
+beautifully printed on #
+it//
+printed on it #
+in//
+on it in #
+large//
+it in large #
+letters.//
+in large letters. #
+After//
+large letters. After #
+awhile,//
+letters. After awhile, #
+finding//
+After awhile, finding #
+that//
+awhile, finding that #
+nothing//
+finding that nothing #
+more//
+that nothing more #
+happened,//
+nothing more happened, #
+she//
+more happened, she #
+decided//
+happened, she decided #
+on//
+she decided on #
+going//
+decided on going #
+into//
+on going into #
+the//
+going into the #
+garden//
+into the garden #
+at//
+the garden at #
+once;//
+garden at once; #
+but,//
+at once; but, #
+alas//
+once; but, alas #
+for//
+but, alas for #
+poor//
+alas for poor #
+Alice!//
+for poor Alice! #
+When//
+poor Alice! When #
+she//
+Alice! When she #
+got//
+When she got #
+to//
+she got to #
+the//
+got to the #
+door,//
+to the door, #
+she//
+the door, she #
+found//
+door, she found #
+she//
+she found she #
+had/
+could//
+found she had #
+forgotten//
+she had forgotten #
+the//
+had forgotten the #
+little//
+forgotten the little #
+golden//
+the little golden #
+key,//
+little golden key, #
+and//
+golden key, and #
+when//
+key, and when #
+she//
+and when she #
+went/
+had//
+when she went #
+back//
+she went back #
+to//
+went back to #
+the//
+back to the #
+table//
+to the table #
+for//
+the table for #
+it,//
+table for it, #
+she//
+for it, she #
+found//
+it, she found #
+she//
+found she could #
+not//
+she could not #
+possibly//
+could not possibly #
+reach//
+not possibly reach #
+it://
+possibly reach it: #
+she//
+reach it: she #
+could//
+it: she could #
+see//
+she could see #
+it//
+could see it #
+quite//
+see it quite #
+plainly//
+it quite plainly #
+through//
+quite plainly through #
+the//
+plainly through the #
+glass//
+through the glass #
+and//
+the glass and #
+she//
+glass and she #
+tried//
+and she tried #
+her//
+she tried her #
+best//
+tried her best #
+to//
+her best to #
+climb//
+best to climb #
+up//
+to climb up #
+one//
+climb up one #
+of//
+up one of #
+the//
+of the legs #
+of//
+the legs of #
+the//
+legs of the #
+table,//
+of the table, #
+but//
+the table, but #
+it//
+table, but it #
+was//
+was too slippery, #
+and//
+too slippery, and #
+when//
+slippery, and when #
+she//
+when she had #
+tired//
+she had tired #
+herself//
+had tired herself #
+out//
+tired herself out #
+with//
+herself out with #
+trying,//
+out with trying, #
+the//
+with trying, the #
+poor//
+trying, the poor #
+little//
+the poor little #
+thing//
+poor little thing #
+sat//
+little thing sat #
+down//
+thing sat down #
+and//
+sat down and #
+cried.//
+down and cried. #
+"Come,//
+and cried. "Come, #
+there's//
+cried. "Come, there's #
+no//
+"Come, there's no #
+use//
+there's no use #
+in//
+no use in #
+crying//
+use in crying #
+like//
+in crying like #
+that!"//
+crying like that!" #
+said//
+like that!" said #
+Alice//
+that!" said Alice #
+to//
+said Alice to #
+herself//
+Alice to herself #
+rather//
+to herself rather #
+sharply.//
+herself rather sharply. #
+"I//
+rather sharply. "I #
+advise//
+sharply. "I advise #
+you//
+"I advise you #
+to//
+advise you to #
+leave//
+you to leave #
+off//
+to leave off #
+this//
+leave off this #
+minute!"//
+off this minute!" #
+She//
+this minute!" She #
+generally//
+minute!" She generally #
+gave//
+She generally gave #
+herself//
+generally gave herself #
+very//
+gave herself very #
+good//
+herself very good #
+advice//
+very good advice #
+(though//
+good advice (though #
+she//
+advice (though she #
+very//
+(though she very #
+seldom//
+she very seldom #
+followed//
+very seldom followed #
+it),//
+seldom followed it), #
+and//
+followed it), and #
+sometimes//
+it), and sometimes #
+she//
+and sometimes she #
+scolded//
+sometimes she scolded #
+herself//
+she scolded herself #
+so//
+scolded herself so #
+severely//
+herself so severely #
+as//
+so severely as #
+to//
+severely as to #
+bring//
+as to bring #
+tears//
+to bring tears #
+into//
+bring tears into #
+her//
+tears into her #
+eyes.//
+into her eyes. #
+Soon//
+her eyes. Soon #
+her//
+eyes. Soon her #
+eye//
+Soon her eye #
+fell//
+her eye fell #
+on//
+eye fell on #
+a//
+fell on a #
+little//
+on a little #
+glass//
+a little glass #
+box//
+little glass box #
+that//
+glass box that #
+was//
+box that was #
+lying//
+that was lying #
+under//
+was lying under #
+the//
+lying under the #
+table://
+under the table: #
+she//
+the table: she #
+opened//
+table: she opened #
+it//
+she opened it #
+and//
+opened it and #
+found//
+it and found #
+in//
+and found in #
+it//
+found in it #
+a//
+in it a #
+very//
+it a very #
+small//
+a very small #
+cake,//
+very small cake, #
+on//
+small cake, on #
+which//
+cake, on which #
+the//
+on which the #
+words//
+which the words #
+"EAT//
+the words "EAT #
+ME"//
+words "EAT ME" #
+were//
+"EAT ME" were #
+beautifully//
+ME" were beautifully #
+marked//
+were beautifully marked #
+in//
+beautifully marked in #
+currants.//
+marked in currants. #
+"Well,//
+in currants. "Well, #
+I'll//
+currants. "Well, I'll #
+eat//
+"Well, I'll eat #
+it,"//
+I'll eat it," #
+said//
+eat it," said #
+Alice,//
+it," said Alice, #
+"and//
+said Alice, "and #
+if//
+Alice, "and if #
+it//
+"and if it #
+makes//
+if it makes #
+me/
+me//
+it makes me #
+grow/
+grow//
+makes me grow #
+larger,/
+smaller,//
+me grow larger, #
+I//
+grow larger, I #
+can//
+larger, I can #
+reach//
+I can reach #
+the//
+can reach the #
+key;//
+reach the key; #
+and//
+the key; and #
+if//
+key; and if #
+it//
+and if it #
+makes//
+me grow smaller, #
+I//
+grow smaller, I #
+can//
+smaller, I can #
+creep//
+I can creep #
+under//
+can creep under #
+the//
+creep under the #
+door://
+under the door: #
+so//
+the door: so #
+either//
+door: so either #
+way//
+so either way #
+I'll//
+either way I'll #
+get//
+way I'll get #
+into//
+I'll get into #
+the//
+get into the #
+garden,//
+into the garden, #
+and//
+the garden, and #
+I//
+garden, and I #
+don't//
+and I don't #
+care//
+I don't care #
+which//
+don't care which #
+happens!".//
+care which happens!". #
 //

@@ -4,11 +4,12 @@
 #include "file_parser.h"
 #include <stdio.h>
 
-#define INIT_S 10
+#define INIT_S 50
 #define INIT_SS 5
 
 typedef struct {
 	char* ngram;
+	int cnt;
 	size_t size;
 	size_t capacity;
 } ngram_t;
@@ -30,10 +31,19 @@ typedef struct {
 	size_t capacity;
 } nbtab_t;
 
+typedef struct {
+	int* statsTab;
+	size_t size;
+	size_t capacity;
+} sttab_t;
+
 ngram_t* make_ngram2( wtab_t*, int, int );
 suftab_t* make_suftab( void );
 suftab_t* resize_suftab( suftab_t* );
-nbtab_t* create_ngrams_base_tab( wtab_t*, int );
-void print_ngramstab( nbtab_t*, wtab_t* );
+sttab_t* make_sttab( void );
+sttab_t* resize_sttab( sttab_t* );
+nbtab_t* create_ngrams_base_tab( wtab_t*, char*, int );
+nbtab_t* read_ngrams_from_base( wtab_t*, char*, int );
+void print_ngramstab( nbtab_t* );
 
 #endif

@@ -17,32 +17,21 @@ int main( int argc, char** argv ) {
 
     int opt, idx, fcount = 0;
     int howManyFiles = 0;
-    int rankNumber, wordsNumber, paragraphNumber;
+    int rankNumber, wordsNumber, paragNumber;
     char* filesNames[1];
     char* outputFileName = NULL, *indBaseFileName = NULL;
     char* nextFile, *file;
     int index, maxidx, m;
-    
+   
+	char** filesNames2;
     wtab_t* wTab = init_tab();
-    
+    wtab_t* wTabSuf = init_tab();
+
     while(( opt = getopt( argc, argv, "t:m:n:l:p:b:" )) != -1) 
     {
         switch(opt)
         {
             case 't':
-/*
-                idx = optind-1;
-                while(idx < argc)
-                {
-                    if(*argv[idx] != '-')
-                    {
-                        nextFile = strdup(argv[idx++]);
-                        filesNames[fcount++] = nextFile;
-                    }
-                    else break;
-                }
-                break;
-*/
                 file = optarg;
                 filesNames[0] = file;
                 fcount = 1;
@@ -54,7 +43,7 @@ int main( int argc, char** argv ) {
                 wordsNumber = atoi(optarg);
                 break;
             case 'l':
-                paragraphNumber = atoi(optarg);
+                paragNumber = atoi(optarg);
                 break;
             case 'p':
                 outputFileName = optarg;
@@ -64,22 +53,28 @@ int main( int argc, char** argv ) {
 					break;
        }
    }
-   printf("opcja rzedu ngramow: %d\nopcja liczby slow: %d\nile plikow: %d\n"
-            "nazwa pliku: %s\nnazwa bazy: %s\n",rankNumber, wordsNumber, howManyFiles, file, outputFileName);
     
    if( optind < argc )
        fprintf( stderr, "\nPodano zle argumenty!\n" );
-    
+
+	srand(time(NULL));
    wTab = parse_file( filesNames, fcount, wTab );
 	nbtab_t* ngramsBase = create_ngrams_base_tab( wTab, indBaseFileName, rankNumber );
-	print_ngramstab( ngramsBase, wTab );
-	generate_text( wTab, ngramsBase, wordsNumber, rankNumber, rand(), outputFileName );
-	maxidx = most_freq_ngram( ngramsBase );
+	print_ngramstab( ngramsBase );
+	generate_text( wTab, ngramsBase, wordsNumber, paragNumber, rankNumber, rand(), outputFileName );
+	/*tryb czytania z bazy
+	nbtab_t* ngramsBase = read_ngrams_from_base( wTabSuf, indBaseFileName, rankNumber );
+	printf( "\n\nile jest sufiksow:%zu\n\n", wTabSuf->size );
+	generate_text_from_base( wTabSuf, ngramsBase, wordsNumber, rankNumber, rand(), outputFileName );*/
 
-	for( m= 0; m < wTab->size; m++ )
-		printf( "%s	", wTab->wordsTab[m]->word );
-	printf( "\n\n" );
-	printf( "stats: najczęściej występujący n-gram: \"%s\"\n\n", ngramsBase->ngramsBaseTab[maxidx].nGram->ngram );
-    
+	most_freq_ngrams( ngramsBase );
+	printf( "Liczba słów w tekstach bazowych: %zu\n", wTab->size );
+	printf( "Liczba wszystkich n-gramów: %zu\n", ngramsBase->size );
+	printf( "Rząd n-gramów: %d\n", rankNumber );
+	printf( "Liczba wygenerowanych slow: %d\n", wordsNumber );
+	printf( "Liczba akapitów: %d\n\n", paragNumber );
+	printf( "-----------------\n\n" );
+
+	 free_wtab( wTab );
 	 return (EXIT_SUCCESS);
 }
